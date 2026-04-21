@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BGA 対戦成績 — sasuken2999 / aohige nagoya / Jin2798</title>
+<style>
+  :root {
+    --s: #2980b9;
+    --a: #27ae60;
+    --j: #e67e22;
+    --gold:   #f1c40f;
+    --silver: #bdc3c7;
+    --bronze: #cd7f32;
+    --bg: #f0f2f5;
+    --card: #fff;
+    --border: #e0e0e0;
+    --text: #333;
+    --muted: #888;
+    --header: #1a1a2e;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  /* ── header ── */
+  header {
+    background: var(--header);
+    color: #fff;
+    padding: 28px 24px 20px;
+  }
+  header h1 { font-size: clamp(1rem, 3vw, 1.4rem); font-weight: 700; }
+  header p  { font-size: .85rem; color: #aaa; margin-top: 4px; }
+
+  /* ── legend ── */
+  .legend {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 12px 24px;
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+  }
+  .chip { display: inline-flex; align-items: center; gap: 6px; font-size: .85rem; font-weight: 600; }
+  .dot  { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+  .dot-s { background: var(--s); }
+  .dot-a { background: var(--a); }
+  .dot-j { background: var(--j); }
+
+  /* ── summary cards ── */
+  .summary {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    padding: 20px 24px;
+  }
+  @media (max-width: 900px) {
+    .summary { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .summary { grid-template-columns: 1fr; gap: 12px; padding: 12px; }
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 18px;
+    box-shadow: 0 2px 6px rgba(0,0,0,.07);
+  }
+  .card-player {
+    font-size: 1rem;
+    font-weight: 800;
+    margin-bottom: 14px;
+    letter-spacing: -.01em;
+  }
+  .card-player.s { color: var(--s); }
+  .card-player.a { color: var(--a); }
+  .card-player.j { color: var(--j); }
+
+  .rank-breakdown {
+    display: flex;
+    gap: 8px;
+    justify-content: space-around;
+    margin-bottom: 12px;
+  }
+  .rank-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    flex: 1;
+  }
+  .medal {
+    font-size: .68rem;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .medal-1 { background: var(--gold);   color: #555; }
+  .medal-2 { background: var(--silver); color: #444; }
+  .medal-3 { background: var(--bronze); color: #fff; }
+
+  .rank-count {
+    font-size: 1.7rem;
+    font-weight: 800;
+    line-height: 1;
+  }
+  .rank-count.s  { color: var(--s); }
+  .rank-count.a  { color: var(--a); }
+  .rank-count.j  { color: var(--j); }
+  .rank-count.c2 { color: #999; }
+  .rank-count.c3 { color: #bbb; }
+
+  .card-sub {
+    font-size: .75rem;
+    color: var(--muted);
+    text-align: center;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+  }
+
+  .card-total {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 4px;
+  }
+  .total-label  { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+  .total-num    { font-size: 3rem; font-weight: 900; color: #555; line-height: 1; }
+  .total-sub    { font-size: .78rem; color: var(--muted); }
+
+  /* ── section ── */
+  .section { padding: 0 24px 16px; }
+  .section h2 { font-size: 1rem; font-weight: 700; margin: 12px 0 10px; color: #444; }
+
+  @media (max-width: 600px) {
+    .section { padding: 0 12px 12px; }
+    header   { padding: 18px 14px; }
+    .legend  { padding: 10px 14px; gap: 12px; }
+  }
+
+  /* ── table wrapper ── */
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 10px; box-shadow: 0 1px 4px rgba(0,0,0,.06); }
+
+  /* ── game stats table ── */
+  .gs-table { width: 100%; border-collapse: collapse; background: var(--card); font-size: .84rem; min-width: 480px; }
+  .gs-table thead tr { background: var(--header); color: #fff; }
+  .gs-table thead th { padding: 9px 12px; text-align: center; font-weight: 600; white-space: nowrap; }
+  .gs-table thead th:first-child { text-align: left; }
+  .gs-table tbody tr { border-bottom: 1px solid var(--border); }
+  .gs-table tbody tr:last-child { border-bottom: none; }
+  .gs-table tbody tr:hover { background: #f7f8fa; }
+  .gs-table td { padding: 8px 12px; text-align: center; vertical-align: middle; }
+  .gs-table td:first-child { text-align: left; font-weight: 600; }
+  .gs-table td:nth-child(2) { color: var(--muted); font-size: .78rem; }
+
+  .win-bar-wrap { display: flex; align-items: center; gap: 6px; justify-content: center; }
+  .win-num { font-size: 1rem; font-weight: 700; min-width: 18px; }
+  .win-num.s { color: var(--s); } .win-num.a { color: var(--a); } .win-num.j { color: var(--j); }
+  .bar-bg   { flex: 1; height: 6px; background: #eee; border-radius: 3px; max-width: 56px; }
+  .bar-fill { height: 100%; border-radius: 3px; }
+  .bar-s { background: var(--s); } .bar-a { background: var(--a); } .bar-j { background: var(--j); }
+
+  /* ── history table ── */
+  table.ht { width: 100%; border-collapse: collapse; background: var(--card); font-size: .85rem; min-width: 520px; }
+  table.ht thead tr { background: var(--header); color: #fff; }
+  table.ht thead th { padding: 10px 14px; text-align: left; font-weight: 600; white-space: nowrap; }
+  table.ht tbody tr { border-bottom: 1px solid var(--border); }
+  table.ht tbody tr:last-child { border-bottom: none; }
+  table.ht tbody tr:hover { background: #f7f8fa; }
+  table.ht td { padding: 9px 14px; vertical-align: top; }
+  .game-name { font-weight: 600; }
+  .date  { color: var(--muted); white-space: nowrap; font-size: .78rem; }
+  .rank  { display: flex; flex-direction: column; gap: 3px; }
+  .rrow  { display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+  .badge { display: inline-block; width: 22px; text-align: center; font-size: .72rem; font-weight: 700; border-radius: 4px; padding: 1px 0; }
+  .b1 { background: var(--gold);   color: #333; }
+  .b2 { background: var(--silver); color: #333; }
+  .b3 { background: var(--bronze); color: #fff; }
+  .bW { background: var(--gold);   color: #333; }
+  .bL { background: #e74c3c;       color: #fff; }
+  .p-s { color: var(--s); font-weight: 600; }
+  .p-a { color: var(--a); font-weight: 600; }
+  .p-j { color: var(--j); font-weight: 600; }
+  .score { color: var(--muted); font-size: .8rem; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🎲 BoardGameArena 対戦成績まとめ</h1>
+  <p>sasuken2999 × aohige nagoya × Jin2798 の3人のみが参加した対戦（2026-04-21 集計）</p>
+</header>
+
+<div class="legend">
+  <span class="chip"><span class="dot dot-s"></span>sasuken2999</span>
+  <span class="chip"><span class="dot dot-a"></span>aohige nagoya</span>
+  <span class="chip"><span class="dot dot-j"></span>Jin2798</span>
+</div>
+
+<!-- 総合サマリー -->
+<div class="summary">
+
+  <div class="card">
+    <div class="card-player s">sasuken2999</div>
+    <div class="rank-breakdown">
+      <div class="rank-item">
+        <span class="medal medal-1">1位</span>
+        <span class="rank-count s">7</span>
+      </div>
+      <div class="rank-item">
+        <span class="medal medal-2">2位</span>
+        <span class="rank-count c2">12</span>
+      </div>
+      <div class="rank-item">
+        <span class="medal medal-3">3位</span>
+        <span class="rank-count c3">8</span>
+      </div>
+    </div>
+    <div class="card-sub">27戦中</div>
+  </div>
+
+  <div class="card">
+    <div class="card-player a">aohige nagoya</div>
+    <div class="rank-breakdown">
+      <div class="rank-item">
+        <span class="medal medal-1">1位</span>
+        <span class="rank-count a">13</span>
+      </div>
+      <div class="rank-item">
+        <span class="medal medal-2">2位</span>
+        <span class="rank-count c2">8</span>
+      </div>
+      <div class="rank-item">
+        <span class="medal medal-3">3位</span>
+        <span class="rank-count c3">6</span>
+      </div>
+    </div>
+    <div class="card-sub">27戦中</div>
+  </div>
+
+  <div class="card">
+    <div class="card-player j">Jin2798</div>
+    <div class="rank-breakdown">
+      <div class="rank-item">
+        <span class="medal medal-1">1位</span>
+        <span class="rank-count j">7</span>
+      </div>
+      <div class="rank-item">
+        <span class="medal medal-2">2位</span>
+        <span class="rank-count c2">10</span>
+      </div>
+      <div class="rank-item">
+        <span class="medal medal-3">3位</span>
+        <span class="rank-count c3">10</span>
+      </div>
+    </div>
+    <div class="card-sub">27戦中</div>
+  </div>
+
+  <div class="card card-total">
+    <div class="total-label">総対戦数</div>
+    <div class="total-num">27</div>
+    <div class="total-sub">3人のみ参加</div>
+    <div class="total-sub" style="margin-top:4px">集計期間：約1年</div>
+  </div>
+
+</div>
+
+<!-- ゲーム別成績 -->
+<div class="section">
+  <h2>ゲーム別成績</h2>
+  <div class="table-wrap">
+  <table class="gs-table">
+    <thead>
+      <tr>
+        <th>ゲーム</th>
+        <th>対戦数</th>
+        <th style="color:#74c0fc">sasuken2999</th>
+        <th style="color:#69db7c">aohige nagoya</th>
+        <th style="color:#e8a87c">Jin2798</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>タクタ<br><span style="font-weight:400;color:#999;font-size:.75rem">Tacta</span></td>
+        <td>2</td>
+        <td><div class="win-bar-wrap"><span class="win-num s">1</span><div class="bar-bg"><div class="bar-fill bar-s" style="width:50%"></div></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num a">0</span><div class="bar-bg"></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num j">1</span><div class="bar-bg"><div class="bar-fill bar-j" style="width:50%"></div></div></div></td>
+      </tr>
+      <tr>
+        <td>ファイブ・トライブズ<br><span style="font-weight:400;color:#999;font-size:.75rem">Five Tribes</span></td>
+        <td>1</td>
+        <td><div class="win-bar-wrap"><span class="win-num s">0</span><div class="bar-bg"></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num a">0</span><div class="bar-bg"></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num j">1</span><div class="bar-bg"><div class="bar-fill bar-j" style="width:100%"></div></div></div></td>
+      </tr>
+      <tr>
+        <td>テラフォーミング・マーズ<br><span style="font-weight:400;color:#999;font-size:.75rem">Terraforming Mars</span></td>
+        <td>1</td>
+        <td><div class="win-bar-wrap"><span class="win-num s">0</span><div class="bar-bg"></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num a">1</span><div class="bar-bg"><div class="bar-fill bar-a" style="width:100%"></div></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num j">0</span><div class="bar-bg"></div></div></td>
+      </tr>
+      <tr>
+        <td>シャーロック13<br><span style="font-weight:400;color:#999;font-size:.75rem">Sherlock 13</span></td>
+        <td>2</td>
+        <td><div class="win-bar-wrap"><span class="win-num s">2</span><div class="bar-bg"><div class="bar-fill bar-s" style="width:100%"></div></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num a">0</span><div class="bar-bg"></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num j">0</span><div class="bar-bg"></div></div></td>
+      </tr>
+      <tr>
+        <td>レフュージ<br><span style="font-weight:400;color:#999;font-size:.75rem">Refuge</span></td>
+        <td>1</td>
+        <td><div class="win-bar-wrap"><span class="win-num s">1</span><div class="bar-bg"><div class="bar-fill bar-s" style="width:100%"></div></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num a">0</span><div class="bar-bg"></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num j">0</span><div class="bar-bg"></div></div></td>
+      </tr>
+      <tr>
+        <td>スシゴー!<br><span style="font-weight:400;color:#999;font-size:.75rem">Sushi Go!</span></td>
+        <td>1</td>
+        <td><div class="win-bar-wrap"><span class="win-num s">0</span><div class="bar-bg"></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num a">0</span><div class="bar-bg"></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num j">1</span><div class="bar-bg"><div class="bar-fill bar-j" style="width:100%"></div></div></div></td>
+      </tr>
+      <tr>
+        <td>世界の七不思議<br><span style="font-weight:400;color:#999;font-size:.75rem">7 Wonders</span></td>
+        <td>1</td>
+        <td><div class="win-bar-wrap"><span class="win-num s">1</span><div class="bar-bg"><div class="bar-fill bar-s" style="width:100%"></div></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num a">0</span><div class="bar-bg"></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num j">0</span><div class="bar-bg"></div></div></td>
+      </tr>
+      <tr>
+        <td>サイズ-大鎌戦役-<br><span style="font-weight:400;color:#999;font-size:.75rem">Scythe</span></td>
+        <td>2</td>
+        <td><div class="win-bar-wrap"><span class="win-num s">0</span><div class="bar-bg"></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num a">2</span><div class="bar-bg"><div class="bar-fill bar-a" style="width:100%"></div></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num j">0</span><div class="bar-bg"></div></div></td>
+      </tr>
+      <tr>
+        <td>キャッスルコンボ<br><span style="font-weight:400;color:#999;font-size:.75rem">Castle Combo</span></td>
+        <td>2</td>
+        <td><div class="win-bar-wrap"><span class="win-num s">0</span><div class="bar-bg"></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num a">2</span><div class="bar-bg"><div class="bar-fill bar-a" style="width:100%"></div></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num j">0</span><div class="bar-bg"></div></div></td>
+      </tr>
+      <tr>
+        <td>チャレンジャーズ!<br><span style="font-weight:400;color:#999;font-size:.75rem">Challengers!</span></td>
+        <td>3</td>
+        <td><div class="win-bar-wrap"><span class="win-num s">2</span><div class="bar-bg"><div class="bar-fill bar-s" style="width:67%"></div></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num a">1</span><div class="bar-bg"><div class="bar-fill bar-a" style="width:33%"></div></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num j">0</span><div class="bar-bg"></div></div></td>
+      </tr>
+      <tr>
+        <td>ブルゴーニュの城<br><span style="font-weight:400;color:#999;font-size:.75rem">Castles of Burgundy</span></td>
+        <td>1</td>
+        <td><div class="win-bar-wrap"><span class="win-num s">0</span><div class="bar-bg"></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num a">1</span><div class="bar-bg"><div class="bar-fill bar-a" style="width:100%"></div></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num j">0</span><div class="bar-bg"></div></div></td>
+      </tr>
+      <tr>
+        <td>ワイナリーの四季<br><span style="font-weight:400;color:#999;font-size:.75rem">Viticulture</span></td>
+        <td>1</td>
+        <td><div class="win-bar-wrap"><span class="win-num s">0</span><div class="bar-bg"></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num a">1</span><div class="bar-bg"><div class="bar-fill bar-a" style="width:100%"></div></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num j">0</span><div class="bar-bg"></div></div></td>
+      </tr>
+      <tr>
+        <td>テラミスティカ：革新の時代<br><span style="font-weight:400;color:#999;font-size:.75rem">Terra Mystica: AoI</span></td>
+        <td>1</td>
+        <td><div class="win-bar-wrap"><span class="win-num s">0</span><div class="bar-bg"></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num a">0</span><div class="bar-bg"></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num j">1</span><div class="bar-bg"><div class="bar-fill bar-j" style="width:100%"></div></div></div></td>
+      </tr>
+      <tr>
+        <td>テラミスティカ<br><span style="font-weight:400;color:#999;font-size:.75rem">Terra Mystica</span></td>
+        <td>1</td>
+        <td><div class="win-bar-wrap"><span class="win-num s">0</span><div class="bar-bg"></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num a">1</span><div class="bar-bg"><div class="bar-fill bar-a" style="width:100%"></div></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num j">0</span><div class="bar-bg"></div></div></td>
+      </tr>
+      <tr>
+        <td>オルレアン<br><span style="font-weight:400;color:#999;font-size:.75rem">Orléans</span></td>
+        <td>1</td>
+        <td><div class="win-bar-wrap"><span class="win-num s">0</span><div class="bar-bg"></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num a">1</span><div class="bar-bg"><div class="bar-fill bar-a" style="width:100%"></div></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num j">0</span><div class="bar-bg"></div></div></td>
+      </tr>
+      <tr>
+        <td>アップ・オア・ダウン?<br><span style="font-weight:400;color:#999;font-size:.75rem">Up or Down?</span></td>
+        <td>1</td>
+        <td><div class="win-bar-wrap"><span class="win-num s">0</span><div class="bar-bg"></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num a">0</span><div class="bar-bg"></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num j">1</span><div class="bar-bg"><div class="bar-fill bar-j" style="width:100%"></div></div></div></td>
+      </tr>
+      <tr>
+        <td>アルナックの失われし遺跡<br><span style="font-weight:400;color:#999;font-size:.75rem">Lost Ruins of Arnak</span></td>
+        <td>1</td>
+        <td><div class="win-bar-wrap"><span class="win-num s">0</span><div class="bar-bg"></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num a">1</span><div class="bar-bg"><div class="bar-fill bar-a" style="width:100%"></div></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num j">0</span><div class="bar-bg"></div></div></td>
+      </tr>
+      <tr>
+        <td>フリップ7<br><span style="font-weight:400;color:#999;font-size:.75rem">Flip 7</span></td>
+        <td>1</td>
+        <td><div class="win-bar-wrap"><span class="win-num s">0</span><div class="bar-bg"></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num a">0</span><div class="bar-bg"></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num j">1</span><div class="bar-bg"><div class="bar-fill bar-j" style="width:100%"></div></div></div></td>
+      </tr>
+      <tr>
+        <td>白鷺城／ホワイト・キャッスル<br><span style="font-weight:400;color:#999;font-size:.75rem">The White Castle</span></td>
+        <td>1</td>
+        <td><div class="win-bar-wrap"><span class="win-num s">0</span><div class="bar-bg"></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num a">0</span><div class="bar-bg"></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num j">1</span><div class="bar-bg"><div class="bar-fill bar-j" style="width:100%"></div></div></div></td>
+      </tr>
+      <tr>
+        <td>アーク・ノヴァ<br><span style="font-weight:400;color:#999;font-size:.75rem">Ark Nova</span></td>
+        <td>1</td>
+        <td><div class="win-bar-wrap"><span class="win-num s">0</span><div class="bar-bg"></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num a">1</span><div class="bar-bg"><div class="bar-fill bar-a" style="width:100%"></div></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num j">0</span><div class="bar-bg"></div></div></td>
+      </tr>
+      <tr>
+        <td>カタン<br><span style="font-weight:400;color:#999;font-size:.75rem">CATAN</span></td>
+        <td>1</td>
+        <td><div class="win-bar-wrap"><span class="win-num s">0</span><div class="bar-bg"></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num a">1</span><div class="bar-bg"><div class="bar-fill bar-a" style="width:100%"></div></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num j">0</span><div class="bar-bg"></div></div></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<!-- 全対戦履歴 -->
+<div class="section">
+  <h2>全対戦履歴（新しい順）</h2>
+  <div class="table-wrap">
+  <table class="ht">
+    <thead>
+      <tr><th>#</th><th>日時</th><th>ゲーム</th><th>結果（順位・スコア）</th></tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td>1</td><td class="date">2026-04-15<br>（6日前）</td>
+        <td class="game-name">タクタ<br><span style="font-weight:400;color:#999;font-size:.78rem">Tacta</span></td>
+        <td><div class="rank">
+          <div class="rrow"><span class="badge b1">1位</span><span class="p-s">sasuken2999</span><span class="score">51pt</span></div>
+          <div class="rrow"><span class="badge b2">2位</span><span class="p-a">aohige nagoya</span><span class="score">50pt</span></div>
+          <div class="rrow"><span class="badge b3">3位</span><span class="p-j">Jin2798</span><span class="score">42pt</span></div>
+        </div></td>
+      </tr>
+
+      <tr>
+        <td>2</td><td class="date">2026-04-15<br>（6日前）</td>
+        <td class="game-name">タクタ<br><span style="font-weight:400;color:#999;font-size:.78rem">Tacta</span></td>
+        <td><div class="rank">
+          <div class="rrow"><span class="badge b1">1位</span><span class="p-j">Jin2798</span><span class="score">51pt</span></div>
+          <div class="rrow"><span class="badge b2">2位</span><span class="p-s">sasuken2999</span><span class="score">47pt</span></div>
+          <div class="rrow"><span class="badge b3">3位</span><span class="p-a">aohige nagoya</span><span class="score">42pt</span></div>
+        </div></td>
+      </tr>
+
+      <tr>
+        <td>3</td><td class="date">2026-04-15<br>（6日前）</td>
+        <td class="game-name">ファイブ・トライブズ<br><span style="font-weight:400;color:#999;font-size:.78rem">Five Tribes</span></td>
+        <td><div class="rank">
+          <div class="rrow"><span class="badge b1">1位</span><span class="p-j">Jin2798</span><span class="score">161pt</span></div>
+          <div class="rrow"><span class="badge b2">2位</span><span class="p-a">aohige nagoya</span><span class="score">159pt</span></div>
+          <div class="rrow"><span class="badge b3">3位</span><span class="p-s">sasuken2999</span><span class="score">153pt</span></div>
+        </div></td>
+      </tr>
+
+      <tr>
+        <td>4</td><td class="date">2026-04-08<br>（13日前）</td>
+        <td class="game-name">テラフォーミング・マーズ<br><span style="font-weight:400;color:#999;font-size:.78rem">Terraforming Mars</span></td>
+        <td><div class="rank">
+          <div class="rrow"><span class="badge b1">1位</span><span class="p-a">aohige nagoya</span><span class="score">81pt</span></div>
+          <div class="rrow"><span class="badge b2">2位</span><span class="p-s">sasuken2999</span><span class="score">76pt</span></div>
+          <div class="rrow"><span class="badge b3">3位</span><span class="p-j">Jin2798</span><span class="score">62pt</span></div>
+        </div></td>
+      </tr>
+
+      <tr>
+        <td>5</td><td class="date">2026-04-02<br>（19日前）</td>
+        <td class="game-name">シャーロック13<br><span style="font-weight:400;color:#999;font-size:.78rem">Sherlock 13</span></td>
+        <td><div class="rank">
+          <div class="rrow"><span class="badge bW">勝者</span><span class="p-s">sasuken2999</span><span class="score">1pt</span></div>
+          <div class="rrow"><span class="badge bL">敗者</span><span class="p-j">Jin2798</span><span class="score">0pt</span></div>
+          <div class="rrow"><span class="badge bL">敗者</span><span class="p-a">aohige nagoya</span><span class="score">0pt</span></div>
+        </div></td>
+      </tr>
+
+      <tr>
+        <td>6</td><td class="date">2026-04-02<br>（19日前）</td>
+        <td class="game-name">シャーロック13<br><span style="font-weight:400;color:#999;font-size:.78rem">Sherlock 13</span></td>
+        <td><div class="rank">
+          <div class="rrow"><span class="badge bW">勝者</span><span class="p-s">sasuken2999</span><span class="score">1pt</span></div>
+          <div class="rrow"><span class="badge bL">敗者</span><span class="p-j">Jin2798</span><span class="score">0pt</span></div>
+          <div class="rrow"><span class="badge bL">敗者</span><span class="p-a">aohige nagoya</span><span class="score">0pt</span></div>
+        </div></td>
+      </tr>
+
+      <tr>
+        <td>7</td><td class="date">2026-04-02<br>（19日前）</td>
+        <td class="game-name">レフュージ<br><span style="font-weight:400;color:#999;font-size:.78rem">Refuge</span></td>
+        <td><div class="rank">
+          <div class="rrow"><span class="badge b1">1位</span><span class="p-s">sasuken2999</span><span class="score">42pt</span></div>
+          <div class="rrow"><span class="badge b2">2位</span><span class="p-j">Jin2798</span><span class="score">39pt</span></div>
+          <div class="rrow"><span class="badge b3">3位</span><span class="p-a">aohige nagoya</span><span class="score">34pt</span></div>
+        </div></td>
+      </tr>
+
+      <tr>
+        <td>8</td><td class="date">2026-04-02<br>（19日前）</td>
+        <td class="game-name">スシゴー!<br><span style="font-weight:400;color:#999;font-size:.78rem">Sushi Go!</span></td>
+        <td><div class="rank">
+          <div class="rrow"><span class="badge b1">1位</span><span class="p-j">Jin2798</span><span class="score">49pt</span></div>
+          <div class="rrow"><span class="badge b2">2位</span><span class="p-s">sasuken2999</span><span class="score">43pt</span></div>
+          <div class="rrow"><span class="badge b3">3位</span><span class="p-a">aohige nagoya</span><span class="score">41pt</span></div>
+        </div></td>
+      </tr>
+
+      <tr>
+        <td>9</td><td class="date">2026-04-02<br>（19日前）</td>
+        <td class="game-name">世界の七不思議<br><span style="font-weight:400;color:#999;font-size:.78rem">7 Wonders</span></td>
+        <td><div class="rank">
+          <div class="rrow"><span class="badge b1">1位</span><span class="p-s">sasuken2999</span><span class="score">39pt</span></div>
+          <div class="rrow"><span class="badge b2">2位</span><span class="p-j">Jin2798</span><span class="score">33pt</span></div>
+          <div class="rrow"><span class="badge b3">3位</span><span class="p-a">aohige nagoya</span><span class="score">32pt</span></div>
+        </div></td>
+      </tr>
+
+      <tr>
+        <td>10</td><td class="date">2026-04-02<br>（19日前）</td>
+        <td class="game-name">サイズ-大鎌戦役-<br><span style="font-weight:400;color:#999;font-size:.78rem">Scythe</span></td>
+        <td><div class="rank">
+          <div class="rrow"><span class="badge b1">1位</span><span class="p-a">aohige nagoya</span><span class="score">105pt</span></div>
+          <div class="rrow"><span class="badge b2">2位</span><span class="p-j">Jin2798</span><span class="score">84pt</span></div>
+          <div class="rrow"><span class="badge b3">3位</span><span class="p-s">sasuken2999</span><span class="score">52pt</span></div>
+        </div></td>
+      </tr>
+
+      <tr>
+        <td>11</td><td class="date">2026-03-25<br>（27日前）</td>
+        <td class="game-name">キャッスルコンボ<br><span style="font-weight:400;color:#999;font-size:.78rem">Castle Combo</span></td>
+        <td><div class="rank">
+          <div class="rrow"><span class="badge b1">1位</span><span class="p-a">aohige nagoya</span><span class="score">81pt</span></div>
+          <div class="rrow"><span class="badge b2">2位</span><span class="p-s">sasuken2999</span><span class="score">74pt</span></div>
+          <div class="rrow"><span class="badge b3">3位</span><span class="p-j">Jin2798</span><span class="score">69pt</span></div>
+        </div></td>
+      </tr>
+
+      <tr>
+        <td>12</td><td class="date">2026-03-25<br>（27日前）</td>
+        <td class="game-name">サイズ-大鎌戦役-<br><span style="font-weight:400;color:#999;font-size:.78rem">Scythe</span></td>
+        <td><div class="rank">
+          <div class="rrow"><span class="badge b1">1位</span><span class="p-a">aohige nagoya</span><span class="score">84pt</span></div>
+          <div class="rrow"><span class="badge b2">2位</span><span class="p-s">sasuken2999</span><span class="score">66pt</span></div>
+          <div class="rrow"><span class="badge b3">3位</span><span class="p-j">Jin2798</span><span class="score">61pt</span></div>
+        </div></td>
+      </tr>
+
+      <tr>
+        <td>13</td><td class="date">2026-03-11<br>（41日前）</td>
+        <td class="game-name">チャレンジャーズ!<br><span style="font-weight:400;color:#999;font-size:.78rem">Challengers!</span></td>
+        <td><div class="rank">
+          <div class="rrow"><span class="badge b1">1位</span><span class="p-s">sasuken2999</span><span class="score">1pt</span></div>
+          <div class="rrow"><span class="badge b2">2位</span><span class="p-j">Jin2798</span><span class="score">0pt</span></div>
+          <div class="rrow"><span class="badge b3">3位</span><span class="p-a">aohige nagoya</span><span class="score">-1pt</span></div>
+        </div></td>
+      </tr>
+
+      <tr>
+        <td>14</td><td class="date">2026-03-11<br>（41日前）</td>
+        <td class="game-name">ブルゴーニュの城<br><span style="font-weight:400;color:#999;font-size:.78rem">Castles of Burgundy</span></td>
+        <td><div class="rank">
+          <div class="rrow"><span class="badge b1">1位</span><span class="p-a">aohige nagoya</span><span class="score">180pt</span></div>
+          <div class="rrow"><span class="badge b2">2位</span><span class="p-s">sasuken2999</span><span class="score">180pt</span></div>
+          <div class="rrow"><span class="badge b3">3位</span><span class="p-j">Jin2798</span><span class="score">113pt</span></div>
+        </div></td>
+      </tr>
+
+      <tr>
+        <td>15</td><td class="date">2026-03-11<br>（41日前）</td>
+        <td class="game-name">チャレンジャーズ!<br><span style="font-weight:400;color:#999;font-size:.78rem">Challengers!</span></td>
+        <td><div class="rank">
+          <div class="rrow"><span class="badge b1">1位</span><span class="p-s">sasuken2999</span><span class="score">1pt</span></div>
+          <div class="rrow"><span class="badge b2">2位</span><span class="p-a">aohige nagoya</span><span class="score">0pt</span></div>
+          <div class="rrow"><span class="badge b3">3位</span><span class="p-j">Jin2798</span><span class="score">-1pt</span></div>
+        </div></td>
+      </tr>
+
+      <tr>
+        <td>16</td><td class="date">2026-03-11<br>（41日前）</td>
+        <td class="game-name">チャレンジャーズ!<br><span style="font-weight:400;color:#999;font-size:.78rem">Challengers!</span></td>
+        <td><div class="rank">
+          <div class="rrow"><span class="badge b1">1位</span><span class="p-a">aohige nagoya</span><span class="score">1pt</span></div>
+          <div class="rrow"><span class="badge b2">2位</span><span class="p-s">sasuken2999</span><span class="score">0pt</span></div>
+          <div class="rrow"><span class="badge b3">3位</span><span class="p-j">Jin2798</span><span class="score">-1pt</span></div>
+        </div></td>
+      </tr>
+
+      <tr>
+        <td>17</td><td class="date">2026-03-10<br>（42日前）</td>
+        <td class="game-name">キャッスルコンボ<br><span style="font-weight:400;color:#999;font-size:.78rem">Castle Combo</span></td>
+        <td><div class="rank">
+          <div class="rrow"><span class="badge b1">1位</span><span class="p-a">aohige nagoya</span><span class="score">69pt</span></div>
+          <div class="rrow"><span class="badge b2">2位</span><span class="p-j">Jin2798</span><span class="score">50pt</span></div>
+          <div class="rrow"><span class="badge b3">3位</span><span class="p-s">sasuken2999</span><span class="score">46pt</span></div>
+        </div></td>
+      </tr>
+
+      <tr>
+        <td>18</td><td class="date">2026-03-10<br>（42日前）</td>
+        <td class="game-name">ワイナリーの四季<br><span style="font-weight:400;color:#999;font-size:.78rem">Viticulture</span></td>
+        <td><div class="rank">
+          <div class="rrow"><span class="badge b1">1位</span><span class="p-a">aohige nagoya</span><span class="score">23pt</span></div>
+          <div class="rrow"><span class="badge b2">2位</span><span class="p-j">Jin2798</span><span class="score">17pt</span></div>
+          <div class="rrow"><span class="badge b3">3位</span><span class="p-s">sasuken2999</span><span class="score">14pt</span></div>
+        </div></td>
+      </tr>
+
+      <tr>
+        <td>19</td><td class="date">2026-02-25<br>（55日前）</td>
+        <td class="game-name">テラミスティカ：革新の時代<br><span style="font-weight:400;color:#999;font-size:.78rem">Terra Mystica: Age of Innovation</span></td>
+        <td><div class="rank">
+          <div class="rrow"><span class="badge b1">1位</span><span class="p-j">Jin2798</span><span class="score">152pt</span></div>
+          <div class="rrow"><span class="badge b2">2位</span><span class="p-a">aohige nagoya</span><span class="score">134pt</span></div>
+          <div class="rrow"><span class="badge b3">3位</span><span class="p-s">sasuken2999</span><span class="score">105pt</span></div>
+        </div></td>
+      </tr>
+
+      <tr>
+        <td>20</td><td class="date">2026-02-21<br>（約2か月前）</td>
+        <td class="game-name">テラミスティカ<br><span style="font-weight:400;color:#999;font-size:.78rem">Terra Mystica</span></td>
+        <td><div class="rank">
+          <div class="rrow"><span class="badge b1">1位</span><span class="p-a">aohige nagoya</span><span class="score">86pt</span></div>
+          <div class="rrow"><span class="badge b2">2位</span><span class="p-j">Jin2798</span><span class="score">85pt</span></div>
+          <div class="rrow"><span class="badge b2">2位</span><span class="p-s">sasuken2999</span><span class="score">85pt</span></div>
+        </div></td>
+      </tr>
+
+      <tr>
+        <td>21</td><td class="date">2026-02-21<br>（約2か月前）</td>
+        <td class="game-name">オルレアン<br><span style="font-weight:400;color:#999;font-size:.78rem">Orléans</span></td>
+        <td><div class="rank">
+          <div class="rrow"><span class="badge b1">1位</span><span class="p-a">aohige nagoya</span><span class="score">124pt</span></div>
+          <div class="rrow"><span class="badge b2">2位</span><span class="p-s">sasuken2999</span><span class="score">124pt</span></div>
+          <div class="rrow"><span class="badge b3">3位</span><span class="p-j">Jin2798</span><span class="score">115pt</span></div>
+        </div></td>
+      </tr>
+
+      <tr>
+        <td>22</td><td class="date">2026-02-21<br>（約2か月前）</td>
+        <td class="game-name">アップ・オア・ダウン?<br><span style="font-weight:400;color:#999;font-size:.78rem">Up or Down?</span></td>
+        <td><div class="rank">
+          <div class="rrow"><span class="badge b1">1位</span><span class="p-j">Jin2798</span><span class="score">64pt</span></div>
+          <div class="rrow"><span class="badge b2">2位</span><span class="p-s">sasuken2999</span><span class="score">62pt</span></div>
+          <div class="rrow"><span class="badge b3">3位</span><span class="p-a">aohige nagoya</span><span class="score">53pt</span></div>
+        </div></td>
+      </tr>
+
+      <tr>
+        <td>23</td><td class="date">2026-02-21<br>（約2か月前）</td>
+        <td class="game-name">アルナックの失われし遺跡<br><span style="font-weight:400;color:#999;font-size:.78rem">Lost Ruins of Arnak</span></td>
+        <td><div class="rank">
+          <div class="rrow"><span class="badge b1">1位</span><span class="p-a">aohige nagoya</span><span class="score">59pt</span></div>
+          <div class="rrow"><span class="badge b2">2位</span><span class="p-j">Jin2798</span><span class="score">57pt</span></div>
+          <div class="rrow"><span class="badge b3">3位</span><span class="p-s">sasuken2999</span><span class="score">48pt</span></div>
+        </div></td>
+      </tr>
+
+      <tr>
+        <td>24</td><td class="date">2026-02-21<br>（約2か月前）</td>
+        <td class="game-name">フリップ7<br><span style="font-weight:400;color:#999;font-size:.78rem">Flip 7</span></td>
+        <td><div class="rank">
+          <div class="rrow"><span class="badge b1">1位</span><span class="p-j">Jin2798</span><span class="score">207pt</span></div>
+          <div class="rrow"><span class="badge b2">2位</span><span class="p-a">aohige nagoya</span><span class="score">148pt</span></div>
+          <div class="rrow"><span class="badge b3">3位</span><span class="p-s">sasuken2999</span><span class="score">108pt</span></div>
+        </div></td>
+      </tr>
+
+      <tr>
+        <td>25</td><td class="date">2026-02-21<br>（約2か月前）</td>
+        <td class="game-name">白鷺城／ホワイト・キャッスル<br><span style="font-weight:400;color:#999;font-size:.78rem">The White Castle</span></td>
+        <td><div class="rank">
+          <div class="rrow"><span class="badge b1">1位</span><span class="p-j">Jin2798</span><span class="score">46pt</span></div>
+          <div class="rrow"><span class="badge b2">2位</span><span class="p-a">aohige nagoya</span><span class="score">45pt</span></div>
+          <div class="rrow"><span class="badge b3">3位</span><span class="p-s">sasuken2999</span><span class="score">38pt</span></div>
+        </div></td>
+      </tr>
+
+      <tr>
+        <td>26</td><td class="date">2025-12-21<br>（約4か月前）</td>
+        <td class="game-name">アーク・ノヴァ<br><span style="font-weight:400;color:#999;font-size:.78rem">Ark Nova</span></td>
+        <td><div class="rank">
+          <div class="rrow"><span class="badge b1">1位</span><span class="p-a">aohige nagoya</span><span class="score">113pt</span></div>
+          <div class="rrow"><span class="badge b2">2位</span><span class="p-s">sasuken2999</span><span class="score">74pt</span></div>
+          <div class="rrow"><span class="badge b3">3位</span><span class="p-j">Jin2798</span><span class="score">58pt</span></div>
+        </div></td>
+      </tr>
+
+      <tr>
+        <td>27</td><td class="date">2025-08-21<br>（約8か月前）</td>
+        <td class="game-name">カタン<br><span style="font-weight:400;color:#999;font-size:.78rem">CATAN</span></td>
+        <td><div class="rank">
+          <div class="rrow"><span class="badge b1">1位</span><span class="p-a">aohige nagoya</span><span class="score">13pt</span></div>
+          <div class="rrow"><span class="badge b2">2位</span><span class="p-s">sasuken2999</span><span class="score">11pt</span></div>
+          <div class="rrow"><span class="badge b3">3位</span><span class="p-j">Jin2798</span><span class="score">8pt</span></div>
+        </div></td>
+      </tr>
+
+    </tbody>
+  </table>
+  </div>
+</div>
+
+</body>
+</html>
