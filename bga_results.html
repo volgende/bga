@@ -195,6 +195,45 @@
   .p-a { color: var(--a); font-weight: 600; }
   .p-j { color: var(--j); font-weight: 600; }
   .score { color: var(--muted); font-size: .8rem; }
+
+  /* ── play-time bar chart ── */
+  .pt-box { background: var(--card); border-radius: 10px; padding: 24px 16px 14px; overflow-x: auto; }
+  .pt-chart-inner { display: flex; min-width: 580px; }
+  .pt-yaxis {
+    display: flex; flex-direction: column; justify-content: space-between;
+    align-items: flex-end; padding-right: 8px; flex-shrink: 0; width: 28px;
+    /* align with bar zone: top padding 20px + bar area 160px */
+    padding-top: 0; height: 180px; padding-bottom: 0; box-sizing: border-box;
+  }
+  .pt-yl { font-size: .64rem; color: var(--muted); line-height: 1; }
+  .pt-plot { flex: 1; display: flex; flex-direction: column; }
+  .pt-barzone {
+    height: 180px; position: relative; border-left: 2px solid #ccc;
+    border-bottom: 2px solid #ccc; overflow: visible; padding-top: 20px;
+    box-sizing: border-box;
+  }
+  /* gridlines at 0,2,4,6,8 wins (each 2 wins = 40px) */
+  .pt-gl { position: absolute; left: 0; right: 0; border-top: 1px dashed #e0e0e0; pointer-events: none; }
+  .pt-gl-solid { border-top-style: solid; border-color: #ccc; }
+  .pt-groups {
+    display: flex; height: 160px; align-items: flex-end;
+    padding: 0 8px; gap: 6px;
+  }
+  .pt-group { flex: 1; display: flex; align-items: flex-end; justify-content: center; gap: 4px; height: 160px; }
+  .pt-bar { border-radius: 3px 3px 0 0; width: 15px; flex-shrink: 0; position: relative; transition: opacity .15s; cursor: default; }
+  .pt-bar:hover { opacity: .75; }
+  .pt-bar .pt-n {
+    position: absolute; top: -17px; left: 50%; transform: translateX(-50%);
+    font-size: .65rem; font-weight: 800; line-height: 1; white-space: nowrap;
+  }
+  .bar-s .pt-n { color: var(--s); }
+  .bar-a .pt-n { color: var(--a); }
+  .bar-j .pt-n { color: var(--j); }
+  .pt-xlabels { display: flex; padding: 0 8px; gap: 6px; margin-top: 6px; border-left: 2px solid transparent; }
+  .pt-xlabel { flex: 1; text-align: center; min-width: 0; }
+  .pt-xl { display: block; font-size: .7rem; font-weight: 700; color: #555; white-space: nowrap; }
+  .pt-xg { display: block; font-size: .58rem; color: var(--muted); margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: default; }
+  .pt-note { font-size: .67rem; color: var(--muted); margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--border); text-align: right; }
 </style>
 </head>
 <body>
@@ -443,6 +482,116 @@
       </tr>
     </tbody>
   </table>
+  </div>
+</div>
+
+<!-- プレイ時間別 1位獲得数 -->
+<div class="section">
+  <h2>プレイ時間別 1位獲得数</h2>
+  <div class="table-wrap">
+  <div class="pt-box">
+    <div class="pt-chart-inner">
+      <!-- Y軸ラベル: 上から 8,6,4,2,0（160px ÷ 4段階 = 40px/段） -->
+      <div class="pt-yaxis">
+        <span class="pt-yl">8</span>
+        <span class="pt-yl">6</span>
+        <span class="pt-yl">4</span>
+        <span class="pt-yl">2</span>
+        <span class="pt-yl">0</span>
+      </div>
+      <div class="pt-plot">
+        <div class="pt-barzone">
+          <!-- グリッドライン (padding-top:20px 分を加算: top = 20 + (8-n)/8*160) -->
+          <div class="pt-gl" style="top:20px"  title="8勝ライン"></div><!-- 8wins -->
+          <div class="pt-gl" style="top:60px"  title="6勝ライン"></div><!-- 6wins -->
+          <div class="pt-gl" style="top:100px" title="4勝ライン"></div><!-- 4wins -->
+          <div class="pt-gl" style="top:140px" title="2勝ライン"></div><!-- 2wins -->
+          <div class="pt-groups">
+            <!-- 20分: s=5(100px), j=4(80px) -->
+            <div class="pt-group">
+              <div class="pt-bar bar-s" style="height:100px;background:var(--s)" title="sasuken2999: 5勝"><span class="pt-n">5</span></div>
+              <div class="pt-bar bar-j" style="height:80px;background:var(--j)"  title="Jin2798: 4勝"><span class="pt-n">4</span></div>
+            </div>
+            <!-- 30分: s=1(20px), a=2(40px) -->
+            <div class="pt-group">
+              <div class="pt-bar bar-s" style="height:20px;background:var(--s)" title="sasuken2999: 1勝"><span class="pt-n">1</span></div>
+              <div class="pt-bar bar-a" style="height:40px;background:var(--a)" title="aohige nagoya: 2勝"><span class="pt-n">2</span></div>
+            </div>
+            <!-- 40分: s=1(20px), j=1(20px) -->
+            <div class="pt-group">
+              <div class="pt-bar bar-s" style="height:20px;background:var(--s)" title="sasuken2999: 1勝"><span class="pt-n">1</span></div>
+              <div class="pt-bar bar-j" style="height:20px;background:var(--j)" title="Jin2798: 1勝"><span class="pt-n">1</span></div>
+            </div>
+            <!-- 50分: s=2(40px), a=1(20px) -->
+            <div class="pt-group">
+              <div class="pt-bar bar-s" style="height:40px;background:var(--s)" title="sasuken2999: 2勝"><span class="pt-n">2</span></div>
+              <div class="pt-bar bar-a" style="height:20px;background:var(--a)" title="aohige nagoya: 1勝"><span class="pt-n">1</span></div>
+            </div>
+            <!-- 80分: j=1(20px) -->
+            <div class="pt-group">
+              <div class="pt-bar bar-j" style="height:20px;background:var(--j)" title="Jin2798: 1勝"><span class="pt-n">1</span></div>
+            </div>
+            <!-- 90分: a=8(160px) -->
+            <div class="pt-group">
+              <div class="pt-bar bar-a" style="height:160px;background:var(--a)" title="aohige nagoya: 8勝"><span class="pt-n">8</span></div>
+            </div>
+            <!-- 100分: j=1(20px) -->
+            <div class="pt-group">
+              <div class="pt-bar bar-j" style="height:20px;background:var(--j)" title="Jin2798: 1勝"><span class="pt-n">1</span></div>
+            </div>
+            <!-- 120分: a=2(40px) -->
+            <div class="pt-group">
+              <div class="pt-bar bar-a" style="height:40px;background:var(--a)" title="aohige nagoya: 2勝"><span class="pt-n">2</span></div>
+            </div>
+            <!-- 150分: a=1(20px) -->
+            <div class="pt-group">
+              <div class="pt-bar bar-a" style="height:20px;background:var(--a)" title="aohige nagoya: 1勝"><span class="pt-n">1</span></div>
+            </div>
+          </div>
+        </div>
+        <!-- X軸ラベル -->
+        <div class="pt-xlabels">
+          <div class="pt-xlabel">
+            <span class="pt-xl">20分</span>
+            <span class="pt-xg" title="タクタ / シャーロック13 / レフュージ / スシゴー! / アップ・オア・ダウン? / フリップ7">6タイトル ▴</span>
+          </div>
+          <div class="pt-xlabel">
+            <span class="pt-xl">30分</span>
+            <span class="pt-xg" title="世界の七不思議 / キャッスルコンボ">2タイトル ▴</span>
+          </div>
+          <div class="pt-xlabel">
+            <span class="pt-xl">40分</span>
+            <span class="pt-xg" title="ファイブ・トライブズ">1タイトル ▴</span>
+          </div>
+          <div class="pt-xlabel">
+            <span class="pt-xl">50分</span>
+            <span class="pt-xg" title="チャレンジャーズ!">1タイトル ▴</span>
+          </div>
+          <div class="pt-xlabel">
+            <span class="pt-xl">80分</span>
+            <span class="pt-xg" title="ホワイト・キャッスル">1タイトル ▴</span>
+          </div>
+          <div class="pt-xlabel">
+            <span class="pt-xl">90分</span>
+            <span class="pt-xg" title="サイズ / ブルゴーニュの城 / ワイナリーの四季 / テラミスティカ / オルレアン / アルナック / カタン">7タイトル ▴</span>
+          </div>
+          <div class="pt-xlabel">
+            <span class="pt-xl">100分</span>
+            <span class="pt-xg" title="テラミスティカ：革新の時代">1タイトル ▴</span>
+          </div>
+          <div class="pt-xlabel">
+            <span class="pt-xl">120分</span>
+            <span class="pt-xg" title="テラフォーミング・マーズ">1タイトル ▴</span>
+          </div>
+          <div class="pt-xlabel">
+            <span class="pt-xl">150分</span>
+            <span class="pt-xg" title="アーク・ノヴァ">1タイトル ▴</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pt-note">※ プレイ時間はBGAの目安時間を10分単位で四捨五入。「Nタイトル ▴」にカーソルを当てるとゲーム名が表示されます。</div>
+  </div>
   </div>
 </div>
 
