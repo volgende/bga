@@ -235,6 +235,42 @@
   .pt-xl { display: block; font-size: .7rem; font-weight: 700; color: #555; white-space: nowrap; }
   .pt-xg { display: block; font-size: .58rem; color: var(--muted); margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: default; }
   .pt-note { font-size: .67rem; color: var(--muted); margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--border); text-align: right; }
+
+  /* ── タブUI ── */
+  .tab-bar {
+    display: flex;
+    background: #fff;
+    border-bottom: 2px solid var(--border);
+    padding: 0 20px;
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+  }
+  .tab-btn {
+    flex: 1;
+    max-width: 220px;
+    padding: 13px 16px;
+    font-size: .88rem;
+    font-weight: 700;
+    font-family: inherit;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    transition: color .15s, border-color .15s;
+    white-space: nowrap;
+  }
+  .tab-btn:hover { color: var(--text); }
+  .tab-btn.active {
+    color: var(--header);
+    border-bottom-color: var(--header);
+  }
+  @media (max-width: 480px) {
+    .tab-btn { font-size: .8rem; padding: 12px 10px; }
+  }
 </style>
 </head>
 <body>
@@ -249,7 +285,12 @@
   <span class="chip"><span class="dot dot-a"></span>aohige nagoya</span>
   <span class="chip"><span class="dot dot-j"></span>Jin2798</span>
 </div>
+<div class="tab-bar">
+  <button class="tab-btn active" data-tab="main"    onclick="switchTab('main')">メイン集計</button>
+  <button class="tab-btn"        data-tab="shinken"  onclick="switchTab('shinken')">初見ゲーム</button>
+</div>
 
+<div id="tab-main">
 <!-- 総合サマリー -->
 <div class="summary">
 
@@ -1220,6 +1261,10 @@
   </div>
 </div>
 
+</div><!-- /tab-main -->
+
+<div id="tab-shinken" style="display:none">
+
 <!-- 初見ゲーム戦績 -->
 <div class="section">
   <h2>初見ゲーム戦績</h2>
@@ -1245,6 +1290,17 @@
   </table>
   </div>
 </div>
+
+</div><!-- /tab-shinken -->
+
+<script>
+function switchTab(name) {
+  document.getElementById("tab-main").style.display    = name === "main"    ? "" : "none";
+  document.getElementById("tab-shinken").style.display = name === "shinken" ? "" : "none";
+  document.querySelectorAll(".tab-btn").forEach(function(b) { b.classList.remove("active"); });
+  document.querySelector(".tab-btn[data-tab='" + name + "']").classList.add("active");
+}
+</script>
 
 </body>
 </html>
