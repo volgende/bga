@@ -9,6 +9,7 @@
     --s: #2980b9;
     --a: #27ae60;
     --j: #e74c3c;
+    --p: #8e44ad;
     --gold:   #f1c40f;
     --silver: #bdc3c7;
     --bronze: #cd7f32;
@@ -52,6 +53,7 @@
   .dot-s { background: var(--s); }
   .dot-a { background: var(--a); }
   .dot-j { background: var(--j); }
+  .dot-p { background: var(--p); }
 
   /* ── summary cards ── */
   .summary {
@@ -83,6 +85,7 @@
   .card-player.s { color: var(--s); }
   .card-player.a { color: var(--a); }
   .card-player.j { color: var(--j); }
+  .card-player.p { color: var(--p); }
 
   .rank-breakdown {
     display: flex;
@@ -107,6 +110,7 @@
   .medal-1 { background: var(--gold);   color: #555; }
   .medal-2 { background: var(--silver); color: #444; }
   .medal-3 { background: var(--bronze); color: #fff; }
+  .medal-4 { background: #ccc;          color: #555; }
 
   .rank-count {
     font-size: 1.7rem;
@@ -116,8 +120,10 @@
   .rank-count.s  { color: var(--s); }
   .rank-count.a  { color: var(--a); }
   .rank-count.j  { color: var(--j); }
+  .rank-count.p  { color: var(--p); }
   .rank-count.c2 { color: #999; }
   .rank-count.c3 { color: #bbb; }
+  .rank-count.c4 { color: #ccc; }
 
   .card-sub {
     font-size: .75rem;
@@ -166,10 +172,10 @@
 
   .win-bar-wrap { display: flex; align-items: center; gap: 6px; justify-content: center; }
   .win-num { font-size: 1rem; font-weight: 700; min-width: 18px; }
-  .win-num.s { color: var(--s); } .win-num.a { color: var(--a); } .win-num.j { color: var(--j); }
+  .win-num.s { color: var(--s); } .win-num.a { color: var(--a); } .win-num.j { color: var(--j); } .win-num.p { color: var(--p); }
   .bar-bg   { flex: 1; height: 6px; background: #eee; border-radius: 3px; max-width: 56px; }
   .bar-fill { height: 100%; border-radius: 3px; }
-  .bar-s { background: var(--s); } .bar-a { background: var(--a); } .bar-j { background: var(--j); }
+  .bar-s { background: var(--s); } .bar-a { background: var(--a); } .bar-j { background: var(--j); } .bar-p { background: var(--p); }
 
   /* ── history table ── */
   table.ht { width: 100%; border-collapse: collapse; background: var(--card); font-size: .85rem; min-width: 600px; }
@@ -189,11 +195,13 @@
   .b1 { background: var(--gold);   color: #333; }
   .b2 { background: var(--silver); color: #333; }
   .b3 { background: var(--bronze); color: #fff; }
+  .b4 { background: #ccc;          color: #444; }
   .bW { background: var(--gold);   color: #333; }
   .bL { background: #e74c3c;       color: #fff; }
   .p-s { color: var(--s); font-weight: 600; }
   .p-a { color: var(--a); font-weight: 600; }
   .p-j { color: var(--j); font-weight: 600; }
+  .p-p { color: var(--p); font-weight: 600; }
   .score { color: var(--muted); font-size: .8rem; }
   .pt-time { text-align: center !important; vertical-align: middle !important; font-size: .85rem; font-weight: 600; color: #666; white-space: nowrap; }
 
@@ -288,6 +296,7 @@
 <div class="tab-bar">
   <button class="tab-btn active" data-tab="main"    onclick="switchTab('main')">メイン集計</button>
   <button class="tab-btn"        data-tab="shinken"  onclick="switchTab('shinken')">初見ゲーム</button>
+  <button class="tab-btn"        data-tab="four"     onclick="switchTab('four')">4人集計</button>
 </div>
 
 <div id="tab-main">
@@ -1507,10 +1516,156 @@
 
 </div><!-- /tab-shinken -->
 
+<div id="tab-four" style="display:none">
+
+<!-- 4人戦 総合サマリー -->
+<div class="summary">
+
+  <div class="card">
+    <div class="card-player s">sasuken2999</div>
+    <div class="rank-breakdown">
+      <div class="rank-item">
+        <span class="medal medal-1">1位</span>
+        <span class="rank-count s" id="f-s1">0</span>
+      </div>
+      <div class="rank-item">
+        <span class="medal medal-2">2位</span>
+        <span class="rank-count c2" id="f-s2">0</span>
+      </div>
+      <div class="rank-item">
+        <span class="medal medal-3">3位</span>
+        <span class="rank-count c3" id="f-s3">0</span>
+      </div>
+      <div class="rank-item">
+        <span class="medal medal-4">4位</span>
+        <span class="rank-count c4" id="f-s4">0</span>
+      </div>
+    </div>
+    <div class="card-sub" id="f-sub-s">0戦中</div>
+  </div>
+
+  <div class="card">
+    <div class="card-player a">aohige nagoya</div>
+    <div class="rank-breakdown">
+      <div class="rank-item">
+        <span class="medal medal-1">1位</span>
+        <span class="rank-count a" id="f-a1">0</span>
+      </div>
+      <div class="rank-item">
+        <span class="medal medal-2">2位</span>
+        <span class="rank-count c2" id="f-a2">0</span>
+      </div>
+      <div class="rank-item">
+        <span class="medal medal-3">3位</span>
+        <span class="rank-count c3" id="f-a3">0</span>
+      </div>
+      <div class="rank-item">
+        <span class="medal medal-4">4位</span>
+        <span class="rank-count c4" id="f-a4">0</span>
+      </div>
+    </div>
+    <div class="card-sub" id="f-sub-a">0戦中</div>
+  </div>
+
+  <div class="card">
+    <div class="card-player p">ponytailthes</div>
+    <div class="rank-breakdown">
+      <div class="rank-item">
+        <span class="medal medal-1">1位</span>
+        <span class="rank-count p" id="f-p1">0</span>
+      </div>
+      <div class="rank-item">
+        <span class="medal medal-2">2位</span>
+        <span class="rank-count c2" id="f-p2">0</span>
+      </div>
+      <div class="rank-item">
+        <span class="medal medal-3">3位</span>
+        <span class="rank-count c3" id="f-p3">0</span>
+      </div>
+      <div class="rank-item">
+        <span class="medal medal-4">4位</span>
+        <span class="rank-count c4" id="f-p4">0</span>
+      </div>
+    </div>
+    <div class="card-sub" id="f-sub-p">0戦中</div>
+  </div>
+
+  <div class="card">
+    <div class="card-player j">Jin2798</div>
+    <div class="rank-breakdown">
+      <div class="rank-item">
+        <span class="medal medal-1">1位</span>
+        <span class="rank-count j" id="f-j1">0</span>
+      </div>
+      <div class="rank-item">
+        <span class="medal medal-2">2位</span>
+        <span class="rank-count c2" id="f-j2">0</span>
+      </div>
+      <div class="rank-item">
+        <span class="medal medal-3">3位</span>
+        <span class="rank-count c3" id="f-j3">0</span>
+      </div>
+      <div class="rank-item">
+        <span class="medal medal-4">4位</span>
+        <span class="rank-count c4" id="f-j4">0</span>
+      </div>
+    </div>
+    <div class="card-sub" id="f-sub-j">0戦中</div>
+  </div>
+
+  <div class="card card-total">
+    <div class="total-label">総対戦数</div>
+    <div class="total-num" id="f-total">0</div>
+    <div class="total-sub">4人参加</div>
+    <div class="total-sub" style="margin-top:4px">sasuken / aohige / ponytailthes / Jin</div>
+  </div>
+
+</div>
+
+<!-- 4人戦 ゲーム別成績 -->
+<div class="section">
+  <h2>ゲーム別成績</h2>
+  <div class="table-wrap">
+  <table class="gs-table">
+    <thead>
+      <tr>
+        <th>ゲーム</th>
+        <th>対戦数</th>
+        <th style="color:#74c0fc">sasuken2999</th>
+        <th style="color:#69db7c">aohige nagoya</th>
+        <th style="color:#c77dff">ponytailthes</th>
+        <th style="color:#f1948a">Jin2798</th>
+      </tr>
+    </thead>
+    <tbody id="f-gamestats-body">
+      <tr><td colspan="6" style="text-align:center;color:#aaa;padding:24px;">まだ対戦記録がありません</td></tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<!-- 4人戦 全対戦履歴 -->
+<div class="section">
+  <h2>全対戦履歴（新しい順）</h2>
+  <div class="table-wrap">
+  <table class="ht">
+    <thead>
+      <tr><th>#</th><th>日時</th><th>ゲーム</th><th style="white-space:nowrap">対戦時間<br>[分]</th><th>結果（順位・スコア）</th></tr>
+    </thead>
+    <tbody id="f-history-body">
+      <tr><td colspan="5" style="text-align:center;color:#aaa;padding:24px;">まだ対戦記録がありません</td></tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+</div><!-- /tab-four -->
+
 <script>
 function switchTab(name) {
   document.getElementById("tab-main").style.display    = name === "main"    ? "" : "none";
   document.getElementById("tab-shinken").style.display = name === "shinken" ? "" : "none";
+  document.getElementById("tab-four").style.display    = name === "four"    ? "" : "none";
   document.querySelectorAll(".tab-btn").forEach(function(b) { b.classList.remove("active"); });
   document.querySelector(".tab-btn[data-tab='" + name + "']").classList.add("active");
 }
