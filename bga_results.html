@@ -212,23 +212,23 @@
     display: flex; flex-direction: column; justify-content: space-between;
     align-items: flex-end; padding-right: 8px; flex-shrink: 0; width: 28px;
     /* align with bar zone: top padding 20px + bar area 240px */
-    padding-top: 0; height: 260px; padding-bottom: 0; box-sizing: border-box;
+    padding-top: 0; height: 380px; padding-bottom: 0; box-sizing: border-box;
   }
   .pt-yl { font-size: .64rem; color: var(--muted); line-height: 1; }
   .pt-plot { flex: 1; display: flex; flex-direction: column; }
   .pt-barzone {
-    height: 300px; position: relative; border-left: 2px solid #ccc;
+    height: 420px; position: relative; border-left: 2px solid #ccc;
     border-bottom: 2px solid #ccc; overflow: visible; padding-top: 20px;
     box-sizing: border-box;
   }
-  /* gridlines at 2,4,6,8,10,12,14 wins (each 2 wins = 40px) */
+  /* gridlines at 2,4,6,8,10,12,14,16,18,20 wins (each 2 wins = 40px) */
   .pt-gl { position: absolute; left: 0; right: 0; border-top: 1px dashed #e0e0e0; pointer-events: none; }
   .pt-gl-solid { border-top-style: solid; border-color: #ccc; }
   .pt-groups {
-    display: flex; height: 280px; align-items: flex-end;
+    display: flex; height: 400px; align-items: flex-end;
     padding: 0 8px; gap: 6px;
   }
-  .pt-group { flex: 1; display: flex; align-items: flex-end; justify-content: center; gap: 4px; height: 280px; }
+  .pt-group { flex: 1; display: flex; align-items: flex-end; justify-content: center; gap: 4px; height: 400px; }
   .pt-bar { border-radius: 3px 3px 0 0; width: 15px; flex-shrink: 0; position: relative; transition: opacity .15s; cursor: default; }
   .pt-bar:hover { opacity: .75; }
   .pt-bar .pt-n {
@@ -285,7 +285,7 @@
 
 <header>
   <h1>🎲 BoardGameArena 対戦成績まとめ</h1>
-  <p>sasuken2999 × aohige nagoya × Jin2798 の3人のみが参加した対戦（2026-09-04 集計）</p>
+  <p>sasuken2999 × aohige nagoya × Jin2798 の3人のみが参加した対戦（2026-10-03 集計）</p>
 </header>
 
 <div class="legend">
@@ -309,18 +309,18 @@
     <div class="rank-breakdown">
       <div class="rank-item">
         <span class="medal medal-1">1位</span>
-        <span class="rank-count s">27</span>
+        <span class="rank-count s">33</span>
       </div>
       <div class="rank-item">
         <span class="medal medal-2">2位</span>
-        <span class="rank-count c2">34</span>
+        <span class="rank-count c2">36</span>
       </div>
       <div class="rank-item">
         <span class="medal medal-3">3位</span>
-        <span class="rank-count c3">27</span>
+        <span class="rank-count c3">30</span>
       </div>
     </div>
-    <div class="card-sub">88戦中</div>
+    <div class="card-sub">99戦中</div>
   </div>
 
   <div class="card">
@@ -328,18 +328,18 @@
     <div class="rank-breakdown">
       <div class="rank-item">
         <span class="medal medal-1">1位</span>
-        <span class="rank-count a">39</span>
+        <span class="rank-count a">41</span>
       </div>
       <div class="rank-item">
         <span class="medal medal-2">2位</span>
-        <span class="rank-count c2">30</span>
+        <span class="rank-count c2">37</span>
       </div>
       <div class="rank-item">
         <span class="medal medal-3">3位</span>
-        <span class="rank-count c3">19</span>
+        <span class="rank-count c3">21</span>
       </div>
     </div>
-    <div class="card-sub">88戦中</div>
+    <div class="card-sub">99戦中</div>
   </div>
 
   <div class="card">
@@ -347,23 +347,23 @@
     <div class="rank-breakdown">
       <div class="rank-item">
         <span class="medal medal-1">1位</span>
-        <span class="rank-count j">24</span>
+        <span class="rank-count j">28</span>
       </div>
       <div class="rank-item">
         <span class="medal medal-2">2位</span>
-        <span class="rank-count c2">31</span>
+        <span class="rank-count c2">32</span>
       </div>
       <div class="rank-item">
         <span class="medal medal-3">3位</span>
-        <span class="rank-count c3">33</span>
+        <span class="rank-count c3">39</span>
       </div>
     </div>
-    <div class="card-sub">88戦中</div>
+    <div class="card-sub">99戦中</div>
   </div>
 
   <div class="card card-total">
     <div class="total-label">総対戦数</div>
-    <div class="total-num">88</div>
+    <div class="total-num">99</div>
     <div class="total-sub">3人のみ参加</div>
     <div class="total-sub" style="margin-top:4px">集計期間：約1年</div>
   </div>
@@ -386,6 +386,55 @@
     </thead>
     <tbody>
       <tr>
+        <td><a href="https://boardgamearena.com/gamepanel?game=carnuta" target="_blank" rel="noopener">カルヌタ</a><br><span style="font-weight:400;color:#999;font-size:.75rem">Carnuta</span></td>
+        <td>1</td>
+        <td><div class="win-bar-wrap"><span class="win-num s">1</span><div class="bar-bg"><div class="bar-fill bar-s" style="width:100%"></div></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num a">0</span><div class="bar-bg"></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num j">0</span><div class="bar-bg"></div></div></td>
+      </tr>
+      <tr>
+        <td><a href="https://boardgamearena.com/gamepanel?game=marrakech" target="_blank" rel="noopener">マラケシュ</a><br><span style="font-weight:400;color:#999;font-size:.75rem">Marrakech</span></td>
+        <td>1</td>
+        <td><div class="win-bar-wrap"><span class="win-num s">0</span><div class="bar-bg"></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num a">0</span><div class="bar-bg"></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num j">1</span><div class="bar-bg"><div class="bar-fill bar-j" style="width:100%"></div></div></div></td>
+      </tr>
+      <tr>
+        <td><a href="https://boardgamearena.com/gamepanel?game=rauha" target="_blank" rel="noopener">ラウハ</a><br><span style="font-weight:400;color:#999;font-size:.75rem">Rauha</span></td>
+        <td>1</td>
+        <td><div class="win-bar-wrap"><span class="win-num s">0</span><div class="bar-bg"></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num a">1</span><div class="bar-bg"><div class="bar-fill bar-a" style="width:100%"></div></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num j">0</span><div class="bar-bg"></div></div></td>
+      </tr>
+      <tr>
+        <td><a href="https://boardgamearena.com/gamepanel?game=spacebase" target="_blank" rel="noopener">スペースベース</a><br><span style="font-weight:400;color:#999;font-size:.75rem">Space Base</span></td>
+        <td>1</td>
+        <td><div class="win-bar-wrap"><span class="win-num s">0</span><div class="bar-bg"></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num a">0</span><div class="bar-bg"></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num j">1</span><div class="bar-bg"><div class="bar-fill bar-j" style="width:100%"></div></div></div></td>
+      </tr>
+      <tr>
+        <td><a href="https://boardgamearena.com/gamepanel?game=vaultdenofthieves" target="_blank" rel="noopener">金庫: 泥棒の巣窟</a><br><span style="font-weight:400;color:#999;font-size:.75rem">Vault A Den of Thieves</span></td>
+        <td>2</td>
+        <td><div class="win-bar-wrap"><span class="win-num s">2</span><div class="bar-bg"><div class="bar-fill bar-s" style="width:100%"></div></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num a">0</span><div class="bar-bg"></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num j">0</span><div class="bar-bg"></div></div></td>
+      </tr>
+      <tr>
+        <td><a href="https://boardgamearena.com/gamepanel?game=laserreflection" target="_blank" rel="noopener">リフレクション</a><br><span style="font-weight:400;color:#999;font-size:.75rem">Reflection</span></td>
+        <td>1</td>
+        <td><div class="win-bar-wrap"><span class="win-num s">1</span><div class="bar-bg"><div class="bar-fill bar-s" style="width:100%"></div></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num a">0</span><div class="bar-bg"></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num j">0</span><div class="bar-bg"></div></div></td>
+      </tr>
+      <tr>
+        <td><a href="https://boardgamearena.com/gamepanel?game=hegemony" target="_blank" rel="noopener">ヘゲモニー</a><br><span style="font-weight:400;color:#999;font-size:.75rem">Hegemony</span></td>
+        <td>1</td>
+        <td><div class="win-bar-wrap"><span class="win-num s">0</span><div class="bar-bg"></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num a">1</span><div class="bar-bg"><div class="bar-fill bar-a" style="width:100%"></div></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num j">1</span><div class="bar-bg"><div class="bar-fill bar-j" style="width:100%"></div></div></div></td>
+      </tr>
+      <tr>
         <td><a href="https://boardgamearena.com/gamepanel?game=digitcode" target="_blank" rel="noopener">ディジットコード</a><br><span style="font-weight:400;color:#999;font-size:.75rem">Digit Code</span></td>
         <td>1</td>
         <td><div class="win-bar-wrap"><span class="win-num s">1</span><div class="bar-bg"><div class="bar-fill bar-s" style="width:100%"></div></div></div></td>
@@ -401,10 +450,10 @@
       </tr>
       <tr>
         <td><a href="https://boardgamearena.com/gamepanel?game=dewan" target="_blank" rel="noopener">デワン</a><br><span style="font-weight:400;color:#999;font-size:.75rem">Dewan</span></td>
-        <td>1</td>
-        <td><div class="win-bar-wrap"><span class="win-num s">0</span><div class="bar-bg"></div></div></td>
+        <td>2</td>
+        <td><div class="win-bar-wrap"><span class="win-num s">1</span><div class="bar-bg"><div class="bar-fill bar-s" style="width:50%"></div></div></div></td>
         <td><div class="win-bar-wrap"><span class="win-num a">0</span><div class="bar-bg"></div></div></td>
-        <td><div class="win-bar-wrap"><span class="win-num j">1</span><div class="bar-bg"><div class="bar-fill bar-j" style="width:100%"></div></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num j">1</span><div class="bar-bg"><div class="bar-fill bar-j" style="width:50%"></div></div></div></td>
       </tr>
       <tr>
         <td><a href="https://boardgamearena.com/gamepanel?game=diggingfordinos" target="_blank" rel="noopener">ディギング・フォー・ダイノス</a><br><span style="font-weight:400;color:#999;font-size:.75rem">Digging For Dinos</span></td>
@@ -632,10 +681,10 @@
       </tr>
       <tr>
         <td><a href="https://boardgamearena.com/gamepanel?game=tacta" target="_blank" rel="noopener">タクタ</a><br><span style="font-weight:400;color:#999;font-size:.75rem">Tacta</span></td>
-        <td>3</td>
-        <td><div class="win-bar-wrap"><span class="win-num s">2</span><div class="bar-bg"><div class="bar-fill bar-s" style="width:67%"></div></div></div></td>
+        <td>4</td>
+        <td><div class="win-bar-wrap"><span class="win-num s">3</span><div class="bar-bg"><div class="bar-fill bar-s" style="width:75%"></div></div></div></td>
         <td><div class="win-bar-wrap"><span class="win-num a">0</span><div class="bar-bg"></div></div></td>
-        <td><div class="win-bar-wrap"><span class="win-num j">1</span><div class="bar-bg"><div class="bar-fill bar-j" style="width:33%"></div></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num j">1</span><div class="bar-bg"><div class="bar-fill bar-j" style="width:25%"></div></div></div></td>
       </tr>
       <tr>
         <td><a href="https://boardgamearena.com/gamepanel?game=fivetribes" target="_blank" rel="noopener">ファイブ・トライブズ</a><br><span style="font-weight:400;color:#999;font-size:.75rem">Five Tribes</span></td>
@@ -646,10 +695,10 @@
       </tr>
       <tr>
         <td><a href="https://boardgamearena.com/gamepanel?game=terraformingmars" target="_blank" rel="noopener">テラフォーミング・マーズ</a><br><span style="font-weight:400;color:#999;font-size:.75rem">Terraforming Mars</span></td>
-        <td>2</td>
+        <td>3</td>
         <td><div class="win-bar-wrap"><span class="win-num s">0</span><div class="bar-bg"></div></div></td>
-        <td><div class="win-bar-wrap"><span class="win-num a">2</span><div class="bar-bg"><div class="bar-fill bar-a" style="width:100%"></div></div></div></td>
-        <td><div class="win-bar-wrap"><span class="win-num j">0</span><div class="bar-bg"></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num a">2</span><div class="bar-bg"><div class="bar-fill bar-a" style="width:67%"></div></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num j">1</span><div class="bar-bg"><div class="bar-fill bar-j" style="width:33%"></div></div></div></td>
       </tr>
       <tr>
         <td><a href="https://boardgamearena.com/gamepanel?game=sherlockthirteen" target="_blank" rel="noopener">シャーロック13</a><br><span style="font-weight:400;color:#999;font-size:.75rem">Sherlock 13</span></td>
@@ -788,8 +837,11 @@
   <div class="table-wrap">
   <div class="pt-box">
     <div class="pt-chart-inner">
-      <!-- Y軸ラベル: 上から 14,12,10,8,6,4,2（280px ÷ 7段階 = 40px/段） -->
+      <!-- Y軸ラベル: 上から 20,18,16,14,12,10,8,6,4,2（400px ÷ 10段階 = 40px/段） -->
       <div class="pt-yaxis">
+        <span class="pt-yl">20</span>
+        <span class="pt-yl">18</span>
+        <span class="pt-yl">16</span>
         <span class="pt-yl">14</span>
         <span class="pt-yl">12</span>
         <span class="pt-yl">10</span>
@@ -800,26 +852,29 @@
       </div>
       <div class="pt-plot">
         <div class="pt-barzone">
-          <!-- グリッドライン (padding-top:20px 分を加算: top = 20 + (14-n)*20) -->
-          <div class="pt-gl" style="top:20px"  title="14勝ライン"></div><!-- 14wins -->
-          <div class="pt-gl" style="top:60px"  title="12勝ライン"></div><!-- 12wins -->
-          <div class="pt-gl" style="top:100px" title="10勝ライン"></div><!-- 10wins -->
-          <div class="pt-gl" style="top:140px" title="8勝ライン"></div><!-- 8wins -->
-          <div class="pt-gl" style="top:180px" title="6勝ライン"></div><!-- 6wins -->
-          <div class="pt-gl" style="top:220px" title="4勝ライン"></div><!-- 4wins -->
-          <div class="pt-gl" style="top:260px" title="2勝ライン"></div><!-- 2wins -->
+          <!-- グリッドライン (padding-top:20px 分を加算: top = 20 + (20-n)*20) -->
+          <div class="pt-gl" style="top:20px"  title="20勝ライン"></div><!-- 20wins -->
+          <div class="pt-gl" style="top:60px"  title="18勝ライン"></div><!-- 18wins -->
+          <div class="pt-gl" style="top:100px" title="16勝ライン"></div><!-- 16wins -->
+          <div class="pt-gl" style="top:140px" title="14勝ライン"></div><!-- 14wins -->
+          <div class="pt-gl" style="top:180px" title="12勝ライン"></div><!-- 12wins -->
+          <div class="pt-gl" style="top:220px" title="10勝ライン"></div><!-- 10wins -->
+          <div class="pt-gl" style="top:260px" title="8勝ライン"></div><!-- 8wins -->
+          <div class="pt-gl" style="top:300px" title="6勝ライン"></div><!-- 6wins -->
+          <div class="pt-gl" style="top:340px" title="4勝ライン"></div><!-- 4wins -->
+          <div class="pt-gl" style="top:380px" title="2勝ライン"></div><!-- 2wins -->
           <div class="pt-groups">
-            <!-- 10分: s=3(60px), a=2(40px), j=2(40px) -->
+            <!-- 10分: s=4(80px), a=2(40px), j=3(60px) -->
             <div class="pt-group">
-              <div class="pt-bar bar-s" style="height:60px;background:var(--s)" title="sasuken2999: 3勝"><span class="pt-n">3</span></div>
+              <div class="pt-bar bar-s" style="height:80px;background:var(--s)" title="sasuken2999: 4勝"><span class="pt-n">4</span></div>
               <div class="pt-bar bar-a" style="height:40px;background:var(--a)" title="aohige nagoya: 2勝"><span class="pt-n">2</span></div>
-              <div class="pt-bar bar-j" style="height:40px;background:var(--j)" title="Jin2798: 2勝"><span class="pt-n">2</span></div>
+              <div class="pt-bar bar-j" style="height:60px;background:var(--j)" title="Jin2798: 3勝"><span class="pt-n">3</span></div>
             </div>
-            <!-- 20分: s=14(280px), a=10(200px), j=12(240px) -->
+            <!-- 20分: s=19(380px), a=11(220px), j=13(260px) -->
             <div class="pt-group">
-              <div class="pt-bar bar-s" style="height:280px;background:var(--s)" title="sasuken2999: 14勝"><span class="pt-n">14</span></div>
-              <div class="pt-bar bar-a" style="height:200px;background:var(--a)" title="aohige nagoya: 10勝"><span class="pt-n">10</span></div>
-              <div class="pt-bar bar-j" style="height:240px;background:var(--j)" title="Jin2798: 12勝"><span class="pt-n">12</span></div>
+              <div class="pt-bar bar-s" style="height:380px;background:var(--s)" title="sasuken2999: 19勝"><span class="pt-n">19</span></div>
+              <div class="pt-bar bar-a" style="height:220px;background:var(--a)" title="aohige nagoya: 11勝"><span class="pt-n">11</span></div>
+              <div class="pt-bar bar-j" style="height:260px;background:var(--j)" title="Jin2798: 13勝"><span class="pt-n">13</span></div>
             </div>
             <!-- 30分: s=1(20px), a=7(140px), j=4(80px) -->
             <div class="pt-group">
@@ -853,13 +908,15 @@
               <div class="pt-bar bar-s" style="height:20px;background:var(--s)" title="sasuken2999: 1勝"><span class="pt-n">1</span></div>
               <div class="pt-bar bar-a" style="height:200px;background:var(--a)" title="aohige nagoya: 10勝"><span class="pt-n">10</span></div>
             </div>
-            <!-- 100分: j=1(20px) -->
+            <!-- 100分: a=1(20px), j=2(40px) -->
             <div class="pt-group">
-              <div class="pt-bar bar-j" style="height:20px;background:var(--j)" title="Jin2798: 1勝"><span class="pt-n">1</span></div>
+              <div class="pt-bar bar-a" style="height:20px;background:var(--a)" title="aohige nagoya: 1勝"><span class="pt-n">1</span></div>
+              <div class="pt-bar bar-j" style="height:40px;background:var(--j)" title="Jin2798: 2勝"><span class="pt-n">2</span></div>
             </div>
-            <!-- 120分: a=2(40px) -->
+            <!-- 120分: a=2(40px), j=1(20px) -->
             <div class="pt-group">
               <div class="pt-bar bar-a" style="height:40px;background:var(--a)" title="aohige nagoya: 2勝"><span class="pt-n">2</span></div>
+              <div class="pt-bar bar-j" style="height:20px;background:var(--j)" title="Jin2798: 1勝"><span class="pt-n">1</span></div>
             </div>
             <!-- 150分: a=2(40px) -->
             <div class="pt-group">
@@ -871,11 +928,11 @@
         <div class="pt-xlabels">
           <div class="pt-xlabel">
             <span class="pt-xl">10分</span>
-            <span class="pt-xg" title="YRO / レース・フォー・ザ・ギャラクシー / ディジットコード / ディギング・フォー・ダイノス">4タイトル ▴</span>
+            <span class="pt-xg" title="YRO / レース・フォー・ザ・ギャラクシー / ディジットコード / ディギング・フォー・ダイノス / カルヌタ / スペースベース">6タイトル ▴</span>
           </div>
           <div class="pt-xlabel">
             <span class="pt-xl">20分</span>
-            <span class="pt-xg" title="タクタ / シャーロック13 / レフュージ / スシゴー! / アップ・オア・ダウン? / フリップ7 / スカルキング / マウンテンゴーツ / オリフラム / ドラフトサウルス / キャプテン・フリップ / イプソ / こねこばくはつ / 宵と暁の呪文書 / シフティング・ストーンズ / ストーンエイジ / 天下鳴動 / ベジタブルストック / 郵便馬車 / クィブルス / デワン">21タイトル ▴</span>
+            <span class="pt-xg" title="タクタ / シャーロック13 / レフュージ / スシゴー! / アップ・オア・ダウン? / フリップ7 / スカルキング / マウンテンゴーツ / オリフラム / ドラフトサウルス / キャプテン・フリップ / イプソ / こねこばくはつ / 宵と暁の呪文書 / シフティング・ストーンズ / ストーンエイジ / 天下鳴動 / ベジタブルストック / 郵便馬車 / クィブルス / デワン / マラケシュ / ラウハ / 金庫: 泥棒の巣窟 / リフレクション">25タイトル ▴</span>
           </div>
           <div class="pt-xlabel">
             <span class="pt-xl">30分</span>
@@ -903,7 +960,7 @@
           </div>
           <div class="pt-xlabel">
             <span class="pt-xl">100分</span>
-            <span class="pt-xg" title="テラミスティカ：革新の時代">1タイトル ▴</span>
+            <span class="pt-xg" title="テラミスティカ：革新の時代 / ヘゲモニー">2タイトル ▴</span>
           </div>
           <div class="pt-xlabel">
             <span class="pt-xl">120分</span>
@@ -932,7 +989,127 @@
     <tbody>
 
       <tr>
-        <td>1</td><td class="date">2026-09-04<br>（本日）</td>
+        <td>1</td><td class="date">2026-10-03<br>（本日）</td>
+        <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=tacta" target="_blank" rel="noopener">タクタ</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Tacta</span></td>
+        <td class="pt-time">20</td>
+        <td><div class="rank">
+          <div class="rrow"><span class="badge b1">1位</span><span class="p-s">sasuken2999</span><span class="score">52pt</span></div>
+          <div class="rrow"><span class="badge b2">2位</span><span class="p-a">aohige nagoya</span><span class="score">49pt</span></div>
+          <div class="rrow"><span class="badge b3">3位</span><span class="p-j">Jin2798</span><span class="score">48pt</span></div>
+        </div></td>
+      </tr>
+
+      <tr>
+        <td>2</td><td class="date">2026-10-03<br>（本日）</td>
+        <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=carnuta" target="_blank" rel="noopener">カルヌタ</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Carnuta</span></td>
+        <td class="pt-time">10</td>
+        <td><div class="rank">
+          <div class="rrow"><span class="badge b1">1位</span><span class="p-s">sasuken2999</span><span class="score">62pt</span></div>
+          <div class="rrow"><span class="badge b2">2位</span><span class="p-j">Jin2798</span><span class="score">59pt</span></div>
+          <div class="rrow"><span class="badge b3">3位</span><span class="p-a">aohige nagoya</span><span class="score">39pt</span></div>
+        </div></td>
+      </tr>
+
+      <tr>
+        <td>3</td><td class="date">2026-10-03<br>（本日）</td>
+        <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=marrakech" target="_blank" rel="noopener">マラケシュ</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Marrakech</span></td>
+        <td class="pt-time">20</td>
+        <td><div class="rank">
+          <div class="rrow"><span class="badge b1">1位</span><span class="p-j">Jin2798</span><span class="score">49pt</span></div>
+          <div class="rrow"><span class="badge b2">2位</span><span class="p-s">sasuken2999</span><span class="score">45pt</span></div>
+          <div class="rrow"><span class="badge b3">3位</span><span class="p-a">aohige nagoya</span><span class="score">31pt</span></div>
+        </div></td>
+      </tr>
+
+      <tr>
+        <td>4</td><td class="date">2026-10-03<br>（本日）</td>
+        <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=terraformingmars" target="_blank" rel="noopener">テラフォーミング・マーズ</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Terraforming Mars</span></td>
+        <td class="pt-time">120</td>
+        <td><div class="rank">
+          <div class="rrow"><span class="badge b1">1位</span><span class="p-j">Jin2798</span><span class="score">91pt</span></div>
+          <div class="rrow"><span class="badge b2">2位</span><span class="p-a">aohige nagoya</span><span class="score">90pt</span></div>
+          <div class="rrow"><span class="badge b3">3位</span><span class="p-s">sasuken2999</span><span class="score">77pt</span></div>
+        </div></td>
+      </tr>
+
+      <tr>
+        <td>5</td><td class="date">2026-09-18<br>（15日前）</td>
+        <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=rauha" target="_blank" rel="noopener">ラウハ</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Rauha</span></td>
+        <td class="pt-time">20</td>
+        <td><div class="rank">
+          <div class="rrow"><span class="badge b1">1位</span><span class="p-a">aohige nagoya</span><span class="score">125pt</span></div>
+          <div class="rrow"><span class="badge b2">2位</span><span class="p-s">sasuken2999</span><span class="score">122pt</span></div>
+          <div class="rrow"><span class="badge b3">3位</span><span class="p-j">Jin2798</span><span class="score">97pt</span></div>
+        </div></td>
+      </tr>
+
+      <tr>
+        <td>6</td><td class="date">2026-09-08<br>（25日前）</td>
+        <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=spacebase" target="_blank" rel="noopener">スペースベース</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Space Base</span></td>
+        <td class="pt-time">10</td>
+        <td><div class="rank">
+          <div class="rrow"><span class="badge b1">1位</span><span class="p-j">Jin2798</span><span class="score">44pt</span></div>
+          <div class="rrow"><span class="badge b2">2位</span><span class="p-a">aohige nagoya</span><span class="score">29pt</span></div>
+          <div class="rrow"><span class="badge b3">3位</span><span class="p-s">sasuken2999</span><span class="score">25pt</span></div>
+        </div></td>
+      </tr>
+
+      <tr>
+        <td>7</td><td class="date">2026-09-08<br>（25日前）</td>
+        <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=vaultdenofthieves" target="_blank" rel="noopener">金庫: 泥棒の巣窟</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Vault A Den of Thieves</span></td>
+        <td class="pt-time">20</td>
+        <td><div class="rank">
+          <div class="rrow"><span class="badge b1">1位</span><span class="p-s">sasuken2999</span><span class="score">18pt</span></div>
+          <div class="rrow"><span class="badge b2">2位</span><span class="p-a">aohige nagoya</span><span class="score">15pt</span></div>
+          <div class="rrow"><span class="badge b3">3位</span><span class="p-j">Jin2798</span><span class="score">14pt</span></div>
+        </div></td>
+      </tr>
+
+      <tr>
+        <td>8</td><td class="date">2026-09-08<br>（25日前）</td>
+        <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=vaultdenofthieves" target="_blank" rel="noopener">金庫: 泥棒の巣窟</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Vault A Den of Thieves</span></td>
+        <td class="pt-time">20</td>
+        <td><div class="rank">
+          <div class="rrow"><span class="badge b1">1位</span><span class="p-s">sasuken2999</span><span class="score">21pt</span></div>
+          <div class="rrow"><span class="badge b2">2位</span><span class="p-a">aohige nagoya</span><span class="score">19pt</span></div>
+          <div class="rrow"><span class="badge b3">3位</span><span class="p-j">Jin2798</span><span class="score">18pt</span></div>
+        </div></td>
+      </tr>
+
+      <tr>
+        <td>9</td><td class="date">2026-09-08<br>（25日前）</td>
+        <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=laserreflection" target="_blank" rel="noopener">リフレクション</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Reflection</span></td>
+        <td class="pt-time">20</td>
+        <td><div class="rank">
+          <div class="rrow"><span class="badge b1">1位</span><span class="p-s">sasuken2999</span><span class="score">67pt</span></div>
+          <div class="rrow"><span class="badge b2">2位</span><span class="p-a">aohige nagoya</span><span class="score">39pt</span></div>
+          <div class="rrow"><span class="badge b3">3位</span><span class="p-j">Jin2798</span><span class="score">-39pt</span></div>
+        </div></td>
+      </tr>
+
+      <tr>
+        <td>10</td><td class="date">2026-09-08<br>（25日前）</td>
+        <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=dewan" target="_blank" rel="noopener">デワン</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Dewan</span></td>
+        <td class="pt-time">20</td>
+        <td><div class="rank">
+          <div class="rrow"><span class="badge b1">1位</span><span class="p-s">sasuken2999</span><span class="score">41pt</span></div>
+          <div class="rrow"><span class="badge b2">2位</span><span class="p-a">aohige nagoya</span><span class="score">36pt</span></div>
+          <div class="rrow"><span class="badge b3">3位</span><span class="p-j">Jin2798</span><span class="score">12pt</span></div>
+        </div></td>
+      </tr>
+
+      <tr>
+        <td>11</td><td class="date">2026-09-08<br>（25日前）</td>
+        <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=hegemony" target="_blank" rel="noopener">ヘゲモニー</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Hegemony</span></td>
+        <td class="pt-time">100</td>
+        <td><div class="rank">
+          <div class="rrow"><span class="badge b1">1位</span><span class="p-j">Jin2798</span><span class="score">1pt</span></div>
+          <div class="rrow"><span class="badge b1">1位</span><span class="p-a">aohige nagoya</span><span class="score">1pt</span></div>
+          <div class="rrow"><span class="badge b3">3位</span><span class="p-s">sasuken2999</span><span class="score">0pt</span></div>
+        </div></td>
+      </tr>
+      <tr>
+        <td>12</td><td class="date">2026-09-04<br>（29日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=digitcode" target="_blank" rel="noopener">ディジットコード</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Digit Code</span></td>
         <td class="pt-time">10</td>
         <td><div class="rank">
@@ -943,7 +1120,7 @@
       </tr>
 
       <tr>
-        <td>2</td><td class="date">2026-09-04<br>（本日）</td>
+        <td>13</td><td class="date">2026-09-04<br>（29日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=coffeerush" target="_blank" rel="noopener">コーヒーラッシュ</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Coffee Rush</span></td>
         <td class="pt-time">30</td>
         <td><div class="rank">
@@ -954,7 +1131,7 @@
       </tr>
 
       <tr>
-        <td>3</td><td class="date">2026-09-04<br>（本日）</td>
+        <td>14</td><td class="date">2026-09-04<br>（29日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=dewan" target="_blank" rel="noopener">デワン</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Dewan</span></td>
         <td class="pt-time">20</td>
         <td><div class="rank">
@@ -965,7 +1142,7 @@
       </tr>
 
       <tr>
-        <td>4</td><td class="date">2026-09-04<br>（本日）</td>
+        <td>15</td><td class="date">2026-09-04<br>（29日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=diggingfordinos" target="_blank" rel="noopener">ディギング・フォー・ダイノス</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Digging For Dinos</span></td>
         <td class="pt-time">10</td>
         <td><div class="rank">
@@ -976,7 +1153,7 @@
       </tr>
 
       <tr>
-        <td>5</td><td class="date">2026-08-26<br>（9日前）</td>
+        <td>16</td><td class="date">2026-08-26<br>（38日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=pondscape" target="_blank" rel="noopener">ポンドスケープ</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Pondscape</span></td>
         <td class="pt-time">30</td>
         <td><div class="rank">
@@ -987,7 +1164,7 @@
       </tr>
 
       <tr>
-        <td>6</td><td class="date">2026-08-26<br>（9日前）</td>
+        <td>17</td><td class="date">2026-08-26<br>（38日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=pondscape" target="_blank" rel="noopener">ポンドスケープ</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Pondscape</span></td>
         <td class="pt-time">30</td>
         <td><div class="rank">
@@ -998,7 +1175,7 @@
       </tr>
 
       <tr>
-        <td>7</td><td class="date">2026-08-26<br>（9日前）</td>
+        <td>18</td><td class="date">2026-08-26<br>（38日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=quibbles" target="_blank" rel="noopener">クィブルス</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Quibbles</span></td>
         <td class="pt-time">20</td>
         <td><div class="rank">
@@ -1009,7 +1186,7 @@
       </tr>
 
       <tr>
-        <td>8</td><td class="date">2026-08-26<br>（9日前）</td>
+        <td>19</td><td class="date">2026-08-26<br>（38日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=quibbles" target="_blank" rel="noopener">クィブルス</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Quibbles</span></td>
         <td class="pt-time">20</td>
         <td><div class="rank">
@@ -1020,7 +1197,7 @@
       </tr>
 
       <tr>
-        <td>9</td><td class="date">2026-08-26<br>（9日前）</td>
+        <td>20</td><td class="date">2026-08-26<br>（38日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=thurnandtaxis" target="_blank" rel="noopener">郵便馬車</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Thurn and Taxis</span></td>
         <td class="pt-time">20</td>
         <td><div class="rank">
@@ -1031,7 +1208,7 @@
       </tr>
 
       <tr>
-        <td>10</td><td class="date">2026-08-19<br>（16日前）</td>
+        <td>21</td><td class="date">2026-08-19<br>（45日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=thurnandtaxis" target="_blank" rel="noopener">郵便馬車</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Thurn and Taxis</span></td>
         <td class="pt-time">20</td>
         <td><div class="rank">
@@ -1042,7 +1219,7 @@
       </tr>
 
       <tr>
-        <td>11</td><td class="date">2026-08-19<br>（16日前）</td>
+        <td>22</td><td class="date">2026-08-19<br>（45日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=tzolkin" target="_blank" rel="noopener">ツォルキン: マヤ神聖歴</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Tzolk'in</span></td>
         <td class="pt-time">30</td>
         <td><div class="rank">
@@ -1053,7 +1230,7 @@
       </tr>
 
       <tr>
-        <td>12</td><td class="date">2026-08-12<br>（23日前）</td>
+        <td>23</td><td class="date">2026-08-12<br>（52日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=skullking" target="_blank" rel="noopener">スカルキング</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Skull King</span></td>
         <td class="pt-time">20</td>
         <td><div class="rank">
@@ -1064,7 +1241,7 @@
       </tr>
 
       <tr>
-        <td>13</td><td class="date">2026-08-12<br>（23日前）</td>
+        <td>24</td><td class="date">2026-08-12<br>（52日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=wondrouscreatures" target="_blank" rel="noopener">ワンダラスクリーチャーズ</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Wondrous Creatures</span></td>
         <td class="pt-time">40</td>
         <td><div class="rank">
@@ -1075,7 +1252,7 @@
       </tr>
 
       <tr>
-        <td>14</td><td class="date">2026-08-05<br>（30日前）</td>
+        <td>25</td><td class="date">2026-08-05<br>（59日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=castlecombo" target="_blank" rel="noopener">キャッスルコンボ</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Castle Combo</span></td>
         <td class="pt-time">30</td>
         <td><div class="rank">
@@ -1086,7 +1263,7 @@
       </tr>
 
       <tr>
-        <td>15</td><td class="date">2026-08-05<br>（30日前）</td>
+        <td>26</td><td class="date">2026-08-05<br>（59日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=vegetablestock" target="_blank" rel="noopener">ベジタブルストック</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Vegetable Stock</span></td>
         <td class="pt-time">20</td>
         <td><div class="rank">
@@ -1097,7 +1274,7 @@
       </tr>
 
       <tr>
-        <td>16</td><td class="date">2026-08-05<br>（30日前）</td>
+        <td>27</td><td class="date">2026-08-05<br>（59日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=raceforthegalaxy" target="_blank" rel="noopener">レース・フォー・ザ・ギャラクシー</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Race for the Galaxy</span></td>
         <td class="pt-time">10</td>
         <td><div class="rank">
@@ -1108,7 +1285,7 @@
       </tr>
 
       <tr>
-        <td>17</td><td class="date">2026-08-05<br>（30日前）</td>
+        <td>28</td><td class="date">2026-08-05<br>（59日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=greatwesterntrail" target="_blank" rel="noopener">グレート・ウエスタン・トレイル</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Great Western Trail</span></td>
         <td class="pt-time">60</td>
         <td><div class="rank">
@@ -1119,7 +1296,7 @@
       </tr>
 
       <tr>
-        <td>18</td><td class="date">2026-08-05<br>（30日前）</td>
+        <td>29</td><td class="date">2026-08-05<br>（59日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=vegetablestock" target="_blank" rel="noopener">ベジタブルストック</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Vegetable Stock</span></td>
         <td class="pt-time">20</td>
         <td><div class="rank">
@@ -1130,7 +1307,7 @@
       </tr>
 
       <tr>
-        <td>19</td><td class="date">2026-08-05<br>（30日前）</td>
+        <td>30</td><td class="date">2026-08-05<br>（59日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=vegetablestock" target="_blank" rel="noopener">ベジタブルストック</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Vegetable Stock</span></td>
         <td class="pt-time">20</td>
         <td><div class="rank">
@@ -1141,7 +1318,7 @@
       </tr>
 
       <tr>
-        <td>20</td><td class="date">2026-07-29<br>（37日前）</td>
+        <td>31</td><td class="date">2026-07-29<br>（66日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=skullking" target="_blank" rel="noopener">スカルキング</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Skull King</span></td>
         <td class="pt-time">20</td>
         <td><div class="rank">
@@ -1152,7 +1329,7 @@
       </tr>
 
       <tr>
-        <td>21</td><td class="date">2026-07-29<br>（37日前）</td>
+        <td>32</td><td class="date">2026-07-29<br>（66日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=yro" target="_blank" rel="noopener">YRO</a><br><span style="font-weight:400;color:#999;font-size:.78rem">YRO</span></td>
         <td class="pt-time">10</td>
         <td><div class="rank">
@@ -1163,7 +1340,7 @@
       </tr>
 
       <tr>
-        <td>22</td><td class="date">2026-07-29<br>（37日前）</td>
+        <td>33</td><td class="date">2026-07-29<br>（66日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=greatwesterntrail" target="_blank" rel="noopener">グレート・ウエスタン・トレイル</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Great Western Trail</span></td>
         <td class="pt-time">60</td>
         <td><div class="rank">
@@ -1174,7 +1351,7 @@
       </tr>
 
       <tr>
-        <td>23</td><td class="date">2026-07-21<br>（45日前）</td>
+        <td>34</td><td class="date">2026-07-21<br>（74日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=orleans" target="_blank" rel="noopener">オルレアン</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Orléans</span></td>
         <td class="pt-time">90</td>
         <td><div class="rank">
@@ -1185,7 +1362,7 @@
       </tr>
 
       <tr>
-        <td>24</td><td class="date">2026-07-21<br>（45日前）</td>
+        <td>35</td><td class="date">2026-07-21<br>（74日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=rumblenation" target="_blank" rel="noopener">天下鳴動</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Rumble Nation</span></td>
         <td class="pt-time">20</td>
         <td><div class="rank">
@@ -1196,7 +1373,7 @@
       </tr>
 
       <tr>
-        <td>25</td><td class="date">2026-07-21<br>（45日前）</td>
+        <td>36</td><td class="date">2026-07-21<br>（74日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=rumblenation" target="_blank" rel="noopener">天下鳴動</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Rumble Nation</span></td>
         <td class="pt-time">20</td>
         <td><div class="rank">
@@ -1207,7 +1384,7 @@
       </tr>
 
       <tr>
-        <td>26</td><td class="date">2026-07-21<br>（45日前）</td>
+        <td>37</td><td class="date">2026-07-21<br>（74日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=yro" target="_blank" rel="noopener">YRO</a><br><span style="font-weight:400;color:#999;font-size:.78rem">YRO</span></td>
         <td class="pt-time">10</td>
         <td><div class="rank">
@@ -1218,7 +1395,7 @@
       </tr>
 
       <tr>
-        <td>27</td><td class="date">2026-07-21<br>（45日前）</td>
+        <td>38</td><td class="date">2026-07-21<br>（74日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=yro" target="_blank" rel="noopener">YRO</a><br><span style="font-weight:400;color:#999;font-size:.78rem">YRO</span></td>
         <td class="pt-time">10</td>
         <td><div class="rank">
@@ -1229,7 +1406,7 @@
       </tr>
 
       <tr>
-        <td>28</td><td class="date">2026-07-09<br>（57日前）</td>
+        <td>39</td><td class="date">2026-07-09<br>（86日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=stoneage" target="_blank" rel="noopener">ストーンエイジ</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Stone Age</span></td>
         <td class="pt-time">20</td>
         <td><div class="rank">
@@ -1240,7 +1417,7 @@
       </tr>
 
       <tr>
-        <td>29</td><td class="date">2026-07-09<br>（57日前）</td>
+        <td>40</td><td class="date">2026-07-09<br>（86日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=lorenzo" target="_blank" rel="noopener">ロレンツォ・イル・マニーフィコ</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Lorenzo il Magnifico</span></td>
         <td class="pt-time">40</td>
         <td><div class="rank">
@@ -1251,7 +1428,7 @@
       </tr>
 
       <tr>
-        <td>30</td><td class="date">2026-06-30<br>（66日前）</td>
+        <td>41</td><td class="date">2026-06-30<br>（95日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=shiftingstones" target="_blank" rel="noopener">シフティング・ストーンズ</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Shifting Stones</span></td>
         <td class="pt-time">20</td>
         <td><div class="rank">
@@ -1262,7 +1439,7 @@
       </tr>
 
       <tr>
-        <td>31</td><td class="date">2026-06-30<br>（66日前）</td>
+        <td>42</td><td class="date">2026-06-30<br>（95日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=shiftingstones" target="_blank" rel="noopener">シフティング・ストーンズ</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Shifting Stones</span></td>
         <td class="pt-time">20</td>
         <td><div class="rank">
@@ -1273,7 +1450,7 @@
       </tr>
 
       <tr>
-        <td>32</td><td class="date">2026-06-30<br>（66日前）</td>
+        <td>43</td><td class="date">2026-06-30<br>（95日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=agricola" target="_blank" rel="noopener">アグリコラ</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Agricola</span></td>
         <td class="pt-time">50</td>
         <td><div class="rank">
@@ -1284,7 +1461,7 @@
       </tr>
 
       <tr>
-        <td>33</td><td class="date">2026-06-25<br>（71日前）</td>
+        <td>44</td><td class="date">2026-06-25<br>（100日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=marcopolotwo" target="_blank" rel="noopener">マルコポーロ2:大いなる帰還</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Marco Polo II: In the Service of the Khan</span></td>
         <td class="pt-time">40</td>
         <td><div class="rank">
@@ -1295,7 +1472,7 @@
       </tr>
 
       <tr>
-        <td>34</td><td class="date">2026-06-25<br>（71日前）</td>
+        <td>45</td><td class="date">2026-06-25<br>（100日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=viticulture" target="_blank" rel="noopener">ワイナリーの四季</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Viticulture</span></td>
         <td class="pt-time">90</td>
         <td><div class="rank">
@@ -1306,7 +1483,7 @@
       </tr>
 
       <tr>
-        <td>35</td><td class="date">2026-06-17<br>（79日前）</td>
+        <td>46</td><td class="date">2026-06-17<br>（108日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=spellbook" target="_blank" rel="noopener">宵と暁の呪文書</a><br><span style="font-weight:400;color:#999;font-size:.78rem">SpellBook</span></td>
         <td class="pt-time">20</td>
         <td><div class="rank">
@@ -1317,7 +1494,7 @@
       </tr>
 
       <tr>
-        <td>36</td><td class="date">2026-06-17<br>（79日前）</td>
+        <td>47</td><td class="date">2026-06-17<br>（108日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=darwinsjourney" target="_blank" rel="noopener">ダーウィンズ・ジャーニー</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Darwin's Journey</span></td>
         <td class="pt-time">50</td>
         <td><div class="rank">
@@ -1328,7 +1505,7 @@
       </tr>
 
       <tr>
-        <td>37</td><td class="date">2026-06-10<br>（86日前）</td>
+        <td>48</td><td class="date">2026-06-10<br>（115日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=explodingkittens" target="_blank" rel="noopener">こねこばくはつ</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Exploding Kittens</span></td>
         <td class="pt-time">20</td>
         <td><div class="rank">
@@ -1339,7 +1516,7 @@
       </tr>
 
       <tr>
-        <td>38</td><td class="date">2026-06-10<br>（86日前）</td>
+        <td>49</td><td class="date">2026-06-10<br>（115日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=parks" target="_blank" rel="noopener">パークス:第二版</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Parks</span></td>
         <td class="pt-time">40</td>
         <td><div class="rank">
@@ -1350,7 +1527,7 @@
       </tr>
 
       <tr>
-        <td>39</td><td class="date">2026-06-10<br>（86日前）</td>
+        <td>50</td><td class="date">2026-06-10<br>（115日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=forestshuffledartmoor" target="_blank" rel="noopener">フォレストシャッフル:ダートムーア</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Forest Shuffle: Dartmoor</span></td>
         <td class="pt-time">30</td>
         <td><div class="rank">
@@ -1361,7 +1538,7 @@
       </tr>
 
       <tr>
-        <td>40</td><td class="date">2026-06-10<br>（86日前）</td>
+        <td>51</td><td class="date">2026-06-10<br>（115日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=explodingkittens" target="_blank" rel="noopener">こねこばくはつ</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Exploding Kittens</span></td>
         <td class="pt-time">20</td>
         <td><div class="rank">
@@ -1372,7 +1549,7 @@
       </tr>
 
       <tr>
-        <td>41</td><td class="date">2026-05-27<br>（100日前）</td>
+        <td>52</td><td class="date">2026-05-27<br>（129日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=diceforge" target="_blank" rel="noopener">ダイスフォージ</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Dice Forge</span></td>
         <td class="pt-time">40</td>
         <td><div class="rank">
@@ -1383,7 +1560,7 @@
       </tr>
 
       <tr>
-        <td>42</td><td class="date">2026-05-27<br>（100日前）</td>
+        <td>53</td><td class="date">2026-05-27<br>（129日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=diceforge" target="_blank" rel="noopener">ダイスフォージ</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Dice Forge</span></td>
         <td class="pt-time">40</td>
         <td><div class="rank">
@@ -1394,7 +1571,7 @@
       </tr>
 
       <tr>
-        <td>43</td><td class="date">2026-05-27<br>（100日前）</td>
+        <td>54</td><td class="date">2026-05-27<br>（129日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=oriflamme" target="_blank" rel="noopener">オリフラム</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Oriflamme</span></td>
         <td class="pt-time">20</td>
         <td><div class="rank">
@@ -1405,7 +1582,7 @@
       </tr>
 
       <tr>
-        <td>44</td><td class="date">2026-05-27<br>（100日前）</td>
+        <td>55</td><td class="date">2026-05-27<br>（129日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=oriflamme" target="_blank" rel="noopener">オリフラム</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Oriflamme</span></td>
         <td class="pt-time">20</td>
         <td><div class="rank">
@@ -1416,7 +1593,7 @@
       </tr>
 
       <tr>
-        <td>45</td><td class="date">2026-05-27<br>（100日前）</td>
+        <td>56</td><td class="date">2026-05-27<br>（129日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=draftosaurus" target="_blank" rel="noopener">ドラフトサウルス</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Draftosaurus</span></td>
         <td class="pt-time">20</td>
         <td><div class="rank">
@@ -1427,7 +1604,7 @@
       </tr>
 
       <tr>
-        <td>46</td><td class="date">2026-05-27<br>（100日前）</td>
+        <td>57</td><td class="date">2026-05-27<br>（129日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=wingspan" target="_blank" rel="noopener">ウイングスパン</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Wingspan</span></td>
         <td class="pt-time">90</td>
         <td><div class="rank">
@@ -1438,7 +1615,7 @@
       </tr>
 
       <tr>
-        <td>47</td><td class="date">2026-05-27<br>（100日前）</td>
+        <td>58</td><td class="date">2026-05-27<br>（129日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=captainflip" target="_blank" rel="noopener">キャプテン・フリップ</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Captain Flip</span></td>
         <td class="pt-time">20</td>
         <td><div class="rank">
@@ -1449,7 +1626,7 @@
       </tr>
 
       <tr>
-        <td>48</td><td class="date">2026-05-27<br>（100日前）</td>
+        <td>59</td><td class="date">2026-05-27<br>（129日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=ipso" target="_blank" rel="noopener">イプソ</a><br><span style="font-weight:400;color:#999;font-size:.78rem">IPSO</span></td>
         <td class="pt-time">20</td>
         <td><div class="rank">
@@ -1460,7 +1637,7 @@
       </tr>
 
       <tr>
-        <td>49</td><td class="date">2026-05-20<br>（107日前）</td>
+        <td>60</td><td class="date">2026-05-20<br>（136日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=mountaingoats" target="_blank" rel="noopener">マウンテンゴーツ</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Mountain Goats</span></td>
         <td class="pt-time">20</td>
         <td><div class="rank">
@@ -1471,7 +1648,7 @@
       </tr>
 
       <tr>
-        <td>50</td><td class="date">2026-05-20<br>（107日前）</td>
+        <td>61</td><td class="date">2026-05-20<br>（136日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=arknova" target="_blank" rel="noopener">アーク・ノヴァ</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Ark Nova</span></td>
         <td class="pt-time">150</td>
         <td><div class="rank">
@@ -1482,7 +1659,7 @@
       </tr>
 
       <tr>
-        <td>51</td><td class="date">2026-05-20<br>（107日前）</td>
+        <td>62</td><td class="date">2026-05-20<br>（136日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=mountaingoats" target="_blank" rel="noopener">マウンテンゴーツ</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Mountain Goats</span></td>
         <td class="pt-time">20</td>
         <td><div class="rank">
@@ -1493,7 +1670,7 @@
       </tr>
 
       <tr>
-        <td>52</td><td class="date">2026-05-13<br>（114日前）</td>
+        <td>63</td><td class="date">2026-05-13<br>（143日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=livingforest" target="_blank" rel="noopener">リビング・フォレスト</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Living Forest</span></td>
         <td class="pt-time">40</td>
         <td><div class="rank">
@@ -1504,7 +1681,7 @@
       </tr>
 
       <tr>
-        <td>53</td><td class="date">2026-05-13<br>（114日前）</td>
+        <td>64</td><td class="date">2026-05-13<br>（143日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=bloodyinn" target="_blank" rel="noopener">ブラッディイン</a><br><span style="font-weight:400;color:#999;font-size:.78rem">The Bloody Inn</span></td>
         <td class="pt-time">30</td>
         <td><div class="rank">
@@ -1515,7 +1692,7 @@
       </tr>
 
       <tr>
-        <td>54</td><td class="date">2026-05-13<br>（114日前）</td>
+        <td>65</td><td class="date">2026-05-13<br>（143日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=akropolis" target="_blank" rel="noopener">アクロポリス</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Akropolis</span></td>
         <td class="pt-time">30</td>
         <td><div class="rank">
@@ -1526,7 +1703,7 @@
       </tr>
 
       <tr>
-        <td>55</td><td class="date">2026-05-13<br>（114日前）</td>
+        <td>66</td><td class="date">2026-05-13<br>（143日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=skullking" target="_blank" rel="noopener">スカルキング</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Skull King</span></td>
         <td class="pt-time">20</td>
         <td><div class="rank">
@@ -1537,7 +1714,7 @@
       </tr>
 
       <tr>
-        <td>56</td><td class="date">2026-05-07<br>（120日前）</td>
+        <td>67</td><td class="date">2026-05-07<br>（149日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=skullking" target="_blank" rel="noopener">スカルキング</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Skull King</span></td>
         <td class="pt-time">20</td>
         <td><div class="rank">
@@ -1548,7 +1725,7 @@
       </tr>
 
       <tr>
-        <td>57</td><td class="date">2026-05-07<br>（120日前）</td>
+        <td>68</td><td class="date">2026-05-07<br>（149日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=akropolis" target="_blank" rel="noopener">アクロポリス</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Akropolis</span></td>
         <td class="pt-time">30</td>
         <td><div class="rank">
@@ -1559,7 +1736,7 @@
       </tr>
 
       <tr>
-        <td>58</td><td class="date">2026-05-07<br>（120日前）</td>
+        <td>69</td><td class="date">2026-05-07<br>（149日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=livingforest" target="_blank" rel="noopener">リビング・フォレスト</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Living Forest</span></td>
         <td class="pt-time">40</td>
         <td><div class="rank">
@@ -1570,7 +1747,7 @@
       </tr>
 
       <tr>
-        <td>59</td><td class="date">2026-04-28<br>（129日前）</td>
+        <td>70</td><td class="date">2026-04-28<br>（158日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=tacta" target="_blank" rel="noopener">タクタ</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Tacta</span></td>
         <td class="pt-time">20</td>
         <td><div class="rank">
@@ -1581,7 +1758,7 @@
       </tr>
 
       <tr>
-        <td>60</td><td class="date">2026-04-28<br>（129日前）</td>
+        <td>71</td><td class="date">2026-04-28<br>（158日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=fivetribes" target="_blank" rel="noopener">ファイブ・トライブズ</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Five Tribes</span></td>
         <td class="pt-time">40</td>
         <td><div class="rank">
@@ -1592,7 +1769,7 @@
       </tr>
 
       <tr>
-        <td>61</td><td class="date">2026-04-21<br>（136日前）</td>
+        <td>72</td><td class="date">2026-04-21<br>（165日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=terraformingmars" target="_blank" rel="noopener">テラフォーミング・マーズ</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Terraforming Mars</span></td>
         <td class="pt-time">120</td>
         <td><div class="rank">
@@ -1603,7 +1780,7 @@
       </tr>
 
       <tr>
-        <td>62</td><td class="date">2026-04-15<br>（142日前）</td>
+        <td>73</td><td class="date">2026-04-15<br>（171日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=tacta" target="_blank" rel="noopener">タクタ</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Tacta</span></td>
         <td class="pt-time">20</td>
         <td><div class="rank">
@@ -1614,7 +1791,7 @@
       </tr>
 
       <tr>
-        <td>63</td><td class="date">2026-04-15<br>（142日前）</td>
+        <td>74</td><td class="date">2026-04-15<br>（171日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=tacta" target="_blank" rel="noopener">タクタ</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Tacta</span></td>
         <td class="pt-time">20</td>
         <td><div class="rank">
@@ -1625,7 +1802,7 @@
       </tr>
 
       <tr>
-        <td>64</td><td class="date">2026-04-15<br>（142日前）</td>
+        <td>75</td><td class="date">2026-04-15<br>（171日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=fivetribes" target="_blank" rel="noopener">ファイブ・トライブズ</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Five Tribes</span></td>
         <td class="pt-time">40</td>
         <td><div class="rank">
@@ -1636,7 +1813,7 @@
       </tr>
 
       <tr>
-        <td>65</td><td class="date">2026-04-08<br>（149日前）</td>
+        <td>76</td><td class="date">2026-04-08<br>（178日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=terraformingmars" target="_blank" rel="noopener">テラフォーミング・マーズ</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Terraforming Mars</span></td>
         <td class="pt-time">120</td>
         <td><div class="rank">
@@ -1647,7 +1824,7 @@
       </tr>
 
       <tr>
-        <td>66</td><td class="date">2026-04-02<br>（155日前）</td>
+        <td>77</td><td class="date">2026-04-02<br>（184日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=sherlockthirteen" target="_blank" rel="noopener">シャーロック13</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Sherlock 13</span></td>
         <td class="pt-time">20</td>
         <td><div class="rank">
@@ -1658,7 +1835,7 @@
       </tr>
 
       <tr>
-        <td>67</td><td class="date">2026-04-02<br>（155日前）</td>
+        <td>78</td><td class="date">2026-04-02<br>（184日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=sherlockthirteen" target="_blank" rel="noopener">シャーロック13</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Sherlock 13</span></td>
         <td class="pt-time">20</td>
         <td><div class="rank">
@@ -1669,7 +1846,7 @@
       </tr>
 
       <tr>
-        <td>68</td><td class="date">2026-04-02<br>（155日前）</td>
+        <td>79</td><td class="date">2026-04-02<br>（184日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=refuge" target="_blank" rel="noopener">レフュージ</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Refuge</span></td>
         <td class="pt-time">20</td>
         <td><div class="rank">
@@ -1680,7 +1857,7 @@
       </tr>
 
       <tr>
-        <td>69</td><td class="date">2026-04-02<br>（155日前）</td>
+        <td>80</td><td class="date">2026-04-02<br>（184日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=sushigo" target="_blank" rel="noopener">スシゴー!</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Sushi Go!</span></td>
         <td class="pt-time">20</td>
         <td><div class="rank">
@@ -1691,7 +1868,7 @@
       </tr>
 
       <tr>
-        <td>70</td><td class="date">2026-04-02<br>（155日前）</td>
+        <td>81</td><td class="date">2026-04-02<br>（184日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=sevenwonders" target="_blank" rel="noopener">世界の七不思議</a><br><span style="font-weight:400;color:#999;font-size:.78rem">7 Wonders</span></td>
         <td class="pt-time">30</td>
         <td><div class="rank">
@@ -1702,7 +1879,7 @@
       </tr>
 
       <tr>
-        <td>71</td><td class="date">2026-04-02<br>（155日前）</td>
+        <td>82</td><td class="date">2026-04-02<br>（184日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=scythe" target="_blank" rel="noopener">サイズ-大鎌戦役-</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Scythe</span></td>
         <td class="pt-time">90</td>
         <td><div class="rank">
@@ -1713,7 +1890,7 @@
       </tr>
 
       <tr>
-        <td>72</td><td class="date">2026-03-25<br>（163日前）</td>
+        <td>83</td><td class="date">2026-03-25<br>（192日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=castlecombo" target="_blank" rel="noopener">キャッスルコンボ</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Castle Combo</span></td>
         <td class="pt-time">30</td>
         <td><div class="rank">
@@ -1724,7 +1901,7 @@
       </tr>
 
       <tr>
-        <td>73</td><td class="date">2026-03-25<br>（163日前）</td>
+        <td>84</td><td class="date">2026-03-25<br>（192日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=scythe" target="_blank" rel="noopener">サイズ-大鎌戦役-</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Scythe</span></td>
         <td class="pt-time">90</td>
         <td><div class="rank">
@@ -1735,7 +1912,7 @@
       </tr>
 
       <tr>
-        <td>74</td><td class="date">2026-03-11<br>（177日前）</td>
+        <td>85</td><td class="date">2026-03-11<br>（206日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=challengers" target="_blank" rel="noopener">チャレンジャーズ!</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Challengers!</span></td>
         <td class="pt-time">50</td>
         <td><div class="rank">
@@ -1746,7 +1923,7 @@
       </tr>
 
       <tr>
-        <td>75</td><td class="date">2026-03-11<br>（177日前）</td>
+        <td>86</td><td class="date">2026-03-11<br>（206日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=castlesofburgundy" target="_blank" rel="noopener">ブルゴーニュの城</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Castles of Burgundy</span></td>
         <td class="pt-time">90</td>
         <td><div class="rank">
@@ -1757,7 +1934,7 @@
       </tr>
 
       <tr>
-        <td>76</td><td class="date">2026-03-11<br>（177日前）</td>
+        <td>87</td><td class="date">2026-03-11<br>（206日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=challengers" target="_blank" rel="noopener">チャレンジャーズ!</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Challengers!</span></td>
         <td class="pt-time">50</td>
         <td><div class="rank">
@@ -1768,7 +1945,7 @@
       </tr>
 
       <tr>
-        <td>77</td><td class="date">2026-03-11<br>（177日前）</td>
+        <td>88</td><td class="date">2026-03-11<br>（206日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=challengers" target="_blank" rel="noopener">チャレンジャーズ!</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Challengers!</span></td>
         <td class="pt-time">50</td>
         <td><div class="rank">
@@ -1779,7 +1956,7 @@
       </tr>
 
       <tr>
-        <td>78</td><td class="date">2026-03-10<br>（178日前）</td>
+        <td>89</td><td class="date">2026-03-10<br>（207日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=castlecombo" target="_blank" rel="noopener">キャッスルコンボ</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Castle Combo</span></td>
         <td class="pt-time">30</td>
         <td><div class="rank">
@@ -1790,7 +1967,7 @@
       </tr>
 
       <tr>
-        <td>79</td><td class="date">2026-03-10<br>（178日前）</td>
+        <td>90</td><td class="date">2026-03-10<br>（207日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=viticulture" target="_blank" rel="noopener">ワイナリーの四季</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Viticulture</span></td>
         <td class="pt-time">90</td>
         <td><div class="rank">
@@ -1801,7 +1978,7 @@
       </tr>
 
       <tr>
-        <td>80</td><td class="date">2026-02-25<br>（191日前）</td>
+        <td>91</td><td class="date">2026-02-25<br>（220日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=ageofinnovation" target="_blank" rel="noopener">テラミスティカ：革新の時代</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Terra Mystica: Age of Innovation</span></td>
         <td class="pt-time">100</td>
         <td><div class="rank">
@@ -1812,7 +1989,7 @@
       </tr>
 
       <tr>
-        <td>81</td><td class="date">2026-02-21<br>（195日前）</td>
+        <td>92</td><td class="date">2026-02-21<br>（224日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=terramystica" target="_blank" rel="noopener">テラミスティカ</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Terra Mystica</span></td>
         <td class="pt-time">90</td>
         <td><div class="rank">
@@ -1823,7 +2000,7 @@
       </tr>
 
       <tr>
-        <td>82</td><td class="date">2026-02-21<br>（195日前）</td>
+        <td>93</td><td class="date">2026-02-21<br>（224日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=orleans" target="_blank" rel="noopener">オルレアン</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Orléans</span></td>
         <td class="pt-time">90</td>
         <td><div class="rank">
@@ -1834,7 +2011,7 @@
       </tr>
 
       <tr>
-        <td>83</td><td class="date">2026-02-21<br>（195日前）</td>
+        <td>94</td><td class="date">2026-02-21<br>（224日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=upordown" target="_blank" rel="noopener">アップ・オア・ダウン?</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Up or Down?</span></td>
         <td class="pt-time">20</td>
         <td><div class="rank">
@@ -1845,7 +2022,7 @@
       </tr>
 
       <tr>
-        <td>84</td><td class="date">2026-02-21<br>（195日前）</td>
+        <td>95</td><td class="date">2026-02-21<br>（224日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=arnak" target="_blank" rel="noopener">アルナックの失われし遺跡</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Lost Ruins of Arnak</span></td>
         <td class="pt-time">90</td>
         <td><div class="rank">
@@ -1856,7 +2033,7 @@
       </tr>
 
       <tr>
-        <td>85</td><td class="date">2026-02-21<br>（195日前）</td>
+        <td>96</td><td class="date">2026-02-21<br>（224日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=flipseven" target="_blank" rel="noopener">フリップ7</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Flip 7</span></td>
         <td class="pt-time">20</td>
         <td><div class="rank">
@@ -1867,7 +2044,7 @@
       </tr>
 
       <tr>
-        <td>86</td><td class="date">2026-02-21<br>（195日前）</td>
+        <td>97</td><td class="date">2026-02-21<br>（224日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=thewhitecastle" target="_blank" rel="noopener">白鷺城／ホワイト・キャッスル</a><br><span style="font-weight:400;color:#999;font-size:.78rem">The White Castle</span></td>
         <td class="pt-time">80</td>
         <td><div class="rank">
@@ -1878,7 +2055,7 @@
       </tr>
 
       <tr>
-        <td>87</td><td class="date">2025-12-21<br>（257日前）</td>
+        <td>98</td><td class="date">2025-12-21<br>（286日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=arknova" target="_blank" rel="noopener">アーク・ノヴァ</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Ark Nova</span></td>
         <td class="pt-time">150</td>
         <td><div class="rank">
@@ -1889,7 +2066,7 @@
       </tr>
 
       <tr>
-        <td>88</td><td class="date">2025-08-21<br>（379日前）</td>
+        <td>99</td><td class="date">2025-08-21<br>（408日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=catan" target="_blank" rel="noopener">カタン</a><br><span style="font-weight:400;color:#999;font-size:.78rem">CATAN</span></td>
         <td class="pt-time">90</td>
         <td><div class="rank">
@@ -1920,7 +2097,7 @@
     <tbody>
 
       <tr>
-        <td class="shinken-num">1</td><td class="date">2026-08-19<br>（16日前）</td>
+        <td class="shinken-num">1</td><td class="date">2026-08-19<br>（45日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=tzolkin" target="_blank" rel="noopener">ツォルキン: マヤ神聖歴</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Tzolk'in</span></td>
         <td><div class="rank">
           <div class="rrow"><span class="badge b1">1位</span><span class="p-a">aohige nagoya</span><span class="score">1pt</span></div>
@@ -1930,7 +2107,7 @@
       </tr>
 
       <tr>
-        <td class="shinken-num">2</td><td class="date">2026-05-27<br>（100日前）</td>
+        <td class="shinken-num">2</td><td class="date">2026-05-27<br>（129日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=darwinsjourney" target="_blank" rel="noopener">ダーウィンズ･ジャーニー</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Darwin's Journey</span></td>
         <td><div class="rank">
           <div class="rrow"><span class="badge b1">1位</span><span class="p-s">sasuken2999</span><span class="score">101pt</span></div>
@@ -2116,7 +2293,7 @@
     <tbody id="f-history-body">
 
       <tr>
-        <td>1</td><td class="date">2026-07-14<br>（52日前）</td>
+        <td>1</td><td class="date">2026-07-14<br>（81日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=tacta" target="_blank" rel="noopener">タクタ</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Tacta</span></td>
         <td class="pt-time">20</td>
         <td><div class="rank">
@@ -2128,7 +2305,7 @@
       </tr>
 
       <tr>
-        <td>2</td><td class="date">2026-07-14<br>（52日前）</td>
+        <td>2</td><td class="date">2026-07-14<br>（81日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=skullking" target="_blank" rel="noopener">スカルキング</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Skull King</span></td>
         <td class="pt-time">20</td>
         <td><div class="rank">
@@ -2140,7 +2317,7 @@
       </tr>
 
       <tr>
-        <td>3</td><td class="date">2026-07-14<br>（52日前）</td>
+        <td>3</td><td class="date">2026-07-14<br>（81日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=shiftingstones" target="_blank" rel="noopener">シフティング・ストーンズ</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Shifting Stones</span></td>
         <td class="pt-time">20</td>
         <td><div class="rank">
@@ -2152,7 +2329,7 @@
       </tr>
 
       <tr>
-        <td>4</td><td class="date">2026-07-14<br>（52日前）</td>
+        <td>4</td><td class="date">2026-07-14<br>（81日前）</td>
         <td class="game-name"><a href="https://boardgamearena.com/gamepanel?game=terraformingmars" target="_blank" rel="noopener">テラフォーミング・マーズ</a><br><span style="font-weight:400;color:#999;font-size:.78rem">Terraforming Mars</span></td>
         <td class="pt-time">120</td>
         <td><div class="rank">
