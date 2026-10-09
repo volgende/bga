@@ -88,6 +88,7 @@
   .card-player.a { color: var(--a); }
   .card-player.j { color: var(--j); }
   .card-player.p { color: var(--p); }
+  .card-player.n { color: var(--n); }
 
   .rank-breakdown {
     display: flex;
@@ -123,6 +124,7 @@
   .rank-count.a  { color: var(--a); }
   .rank-count.j  { color: var(--j); }
   .rank-count.p  { color: var(--p); }
+  .rank-count.n  { color: var(--n); }
   .rank-count.c2 { color: #999; }
   .rank-count.c3 { color: #bbb; }
   .rank-count.c4 { color: #ccc; }
@@ -174,10 +176,10 @@
 
   .win-bar-wrap { display: flex; align-items: center; gap: 6px; justify-content: center; }
   .win-num { font-size: 1rem; font-weight: 700; min-width: 18px; }
-  .win-num.s { color: var(--s); } .win-num.a { color: var(--a); } .win-num.j { color: var(--j); } .win-num.p { color: var(--p); }
+  .win-num.s { color: var(--s); } .win-num.a { color: var(--a); } .win-num.j { color: var(--j); } .win-num.p { color: var(--p); } .win-num.n { color: var(--n); }
   .bar-bg   { flex: 1; height: 6px; background: #eee; border-radius: 3px; max-width: 56px; }
   .bar-fill { height: 100%; border-radius: 3px; }
-  .bar-s { background: var(--s); } .bar-a { background: var(--a); } .bar-j { background: var(--j); } .bar-p { background: var(--p); }
+  .bar-s { background: var(--s); } .bar-a { background: var(--a); } .bar-j { background: var(--j); } .bar-p { background: var(--p); } .bar-n { background: var(--n); }
 
   /* ── history table ── */
   table.ht { width: 100%; border-collapse: collapse; background: var(--card); font-size: .85rem; min-width: 600px; }
@@ -2270,6 +2272,29 @@
     <div class="card-sub" id="f-sub-j">5戦中</div>
   </div>
 
+  <div class="card">
+    <div class="card-player n">nacchi8787</div>
+    <div class="rank-breakdown">
+      <div class="rank-item">
+        <span class="medal medal-1">1位</span>
+        <span class="rank-count n" id="f-n1">1</span>
+      </div>
+      <div class="rank-item">
+        <span class="medal medal-2">2位</span>
+        <span class="rank-count c2" id="f-n2">0</span>
+      </div>
+      <div class="rank-item">
+        <span class="medal medal-3">3位</span>
+        <span class="rank-count c3" id="f-n3">0</span>
+      </div>
+      <div class="rank-item">
+        <span class="medal medal-4">4位</span>
+        <span class="rank-count c4" id="f-n4">0</span>
+      </div>
+    </div>
+    <div class="card-sub" id="f-sub-n">1戦中</div>
+  </div>
+
   <div class="card card-total">
     <div class="total-label">総対戦数</div>
     <div class="total-num" id="f-total">5</div>
@@ -2292,6 +2317,7 @@
         <th style="color:#69db7c">aohige nagoya</th>
         <th style="color:#ffd43b">ponytailthes</th>
         <th style="color:#f1948a">Jin2798</th>
+        <th style="color:#b57edc">nacchi8787</th>
       </tr>
     </thead>
     <tbody id="f-gamestats-body">
@@ -2302,6 +2328,7 @@
         <td><div class="win-bar-wrap"><span class="win-num a">0</span><div class="bar-bg"></div></div></td>
         <td><div class="win-bar-wrap"><span class="win-num p">0</span><div class="bar-bg"></div></div></td>
         <td><div class="win-bar-wrap"><span class="win-num j">0</span><div class="bar-bg"></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num n">1</span><div class="bar-bg"><div class="bar-fill bar-n" style="width:100%"></div></div></div></td>
       </tr>
       <tr>
         <td><a href="https://boardgamearena.com/gamepanel?game=terraformingmars" target="_blank" rel="noopener">テラフォーミング・マーズ</a><br><span style="font-weight:400;color:#999;font-size:.75rem">Terraforming Mars</span></td>
@@ -2310,6 +2337,7 @@
         <td><div class="win-bar-wrap"><span class="win-num a">0</span><div class="bar-bg"></div></div></td>
         <td><div class="win-bar-wrap"><span class="win-num p">1</span><div class="bar-bg"><div class="bar-fill bar-p" style="width:100%"></div></div></div></td>
         <td><div class="win-bar-wrap"><span class="win-num j">0</span><div class="bar-bg"></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num n">0</span><div class="bar-bg"></div></div></td>
       </tr>
       <tr>
         <td><a href="https://boardgamearena.com/gamepanel?game=shiftingstones" target="_blank" rel="noopener">シフティング・ストーンズ</a><br><span style="font-weight:400;color:#999;font-size:.75rem">Shifting Stones</span></td>
@@ -2318,6 +2346,7 @@
         <td><div class="win-bar-wrap"><span class="win-num a">0</span><div class="bar-bg"></div></div></td>
         <td><div class="win-bar-wrap"><span class="win-num p">1</span><div class="bar-bg"><div class="bar-fill bar-p" style="width:100%"></div></div></div></td>
         <td><div class="win-bar-wrap"><span class="win-num j">1</span><div class="bar-bg"><div class="bar-fill bar-j" style="width:100%"></div></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num n">0</span><div class="bar-bg"></div></div></td>
       </tr>
       <tr>
         <td><a href="https://boardgamearena.com/gamepanel?game=skullking" target="_blank" rel="noopener">スカルキング</a><br><span style="font-weight:400;color:#999;font-size:.75rem">Skull King</span></td>
@@ -2326,6 +2355,7 @@
         <td><div class="win-bar-wrap"><span class="win-num a">0</span><div class="bar-bg"></div></div></td>
         <td><div class="win-bar-wrap"><span class="win-num p">1</span><div class="bar-bg"><div class="bar-fill bar-p" style="width:100%"></div></div></div></td>
         <td><div class="win-bar-wrap"><span class="win-num j">0</span><div class="bar-bg"></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num n">0</span><div class="bar-bg"></div></div></td>
       </tr>
       <tr>
         <td><a href="https://boardgamearena.com/gamepanel?game=tacta" target="_blank" rel="noopener">タクタ</a><br><span style="font-weight:400;color:#999;font-size:.75rem">Tacta</span></td>
@@ -2334,6 +2364,7 @@
         <td><div class="win-bar-wrap"><span class="win-num a">1</span><div class="bar-bg"><div class="bar-fill bar-a" style="width:100%"></div></div></div></td>
         <td><div class="win-bar-wrap"><span class="win-num p">1</span><div class="bar-bg"><div class="bar-fill bar-p" style="width:100%"></div></div></div></td>
         <td><div class="win-bar-wrap"><span class="win-num j">0</span><div class="bar-bg"></div></div></td>
+        <td><div class="win-bar-wrap"><span class="win-num n">0</span><div class="bar-bg"></div></div></td>
       </tr>
     </tbody>
   </table>
