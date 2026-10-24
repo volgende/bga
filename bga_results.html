@@ -284,6 +284,25 @@
   @media (max-width: 480px) {
     .tab-btn { font-size: .8rem; padding: 12px 10px; }
   }
+
+  /* メイン集計 内のサブタブ */
+  .subtab-bar {
+    display: flex; gap: 8px; flex-wrap: wrap;
+    padding: 18px 24px 0;
+  }
+  .subtab-btn {
+    padding: 8px 16px; font-size: .82rem; font-weight: 700;
+    font-family: inherit; border: 1px solid var(--border);
+    background: var(--card); color: var(--muted);
+    border-radius: 999px; cursor: pointer;
+    transition: background .15s, color .15s, border-color .15s;
+  }
+  .subtab-btn:hover { color: var(--text); border-color: var(--muted); }
+  .subtab-btn.active { background: var(--header); color: #fff; border-color: var(--header); }
+  @media (max-width: 480px) {
+    .subtab-bar { padding: 14px 12px 0; }
+    .subtab-btn { font-size: .76rem; padding: 7px 12px; }
+  }
 </style>
 </head>
 <body>
@@ -376,8 +395,14 @@
 
 </div>
 
+<div class="subtab-bar">
+  <button class="subtab-btn active" data-sub="games"   onclick="showMainSection('games')">ゲーム別成績</button>
+  <button class="subtab-btn"        data-sub="chart"   onclick="showMainSection('chart')">プレイ時間別 1位獲得数</button>
+  <button class="subtab-btn"        data-sub="history" onclick="showMainSection('history')">全対戦履歴</button>
+</div>
+
 <!-- ゲーム別成績 -->
-<div class="section">
+<div class="section" id="ms-games">
   <h2>ゲーム別成績</h2>
   <div class="table-wrap">
   <table class="gs-table">
@@ -880,7 +905,7 @@
 </div>
 
 <!-- プレイ時間別 1位獲得数 -->
-<div class="section">
+<div class="section" id="ms-chart" style="display:none">
   <h2>プレイ時間別 1位獲得数</h2>
   <div class="table-wrap">
   <div class="pt-box">
@@ -1027,7 +1052,7 @@
 </div>
 
 <!-- 全対戦履歴 -->
-<div class="section">
+<div class="section" id="ms-history" style="display:none">
   <h2>全対戦履歴（新しい順）</h2>
   <div class="table-wrap">
   <table class="ht">
@@ -2570,6 +2595,13 @@ function switchTab(name) {
   document.getElementById("tab-four").style.display    = name === "four"    ? "" : "none";
   document.querySelectorAll(".tab-btn").forEach(function(b) { b.classList.remove("active"); });
   document.querySelector(".tab-btn[data-tab='" + name + "']").classList.add("active");
+}
+function showMainSection(name) {
+  document.getElementById("ms-games").style.display   = name === "games"   ? "" : "none";
+  document.getElementById("ms-chart").style.display   = name === "chart"   ? "" : "none";
+  document.getElementById("ms-history").style.display = name === "history" ? "" : "none";
+  document.querySelectorAll(".subtab-btn").forEach(function(b) { b.classList.remove("active"); });
+  document.querySelector(".subtab-btn[data-sub='" + name + "']").classList.add("active");
 }
 </script>
 
