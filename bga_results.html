@@ -323,6 +323,7 @@
   <button class="tab-btn active" data-tab="main"    onclick="switchTab('main')">メイン集計</button>
   <button class="tab-btn"        data-tab="shinken"  onclick="switchTab('shinken')">初見ゲーム</button>
   <button class="tab-btn"        data-tab="four"     onclick="switchTab('four')">4人集計</button>
+  <button class="tab-btn"        data-tab="trend"    onclick="switchTab('trend')">傾向まとめ</button>
 </div>
 
 <div id="tab-main">
@@ -2645,11 +2646,95 @@
 
 </div><!-- /tab-four -->
 
+<div id="tab-trend" style="display:none">
+
+<!-- 総合サマリー -->
+<div class="section">
+  <h2>総合サマリー</h2>
+  <p style="font-size:.85rem;color:var(--muted);margin:-6px 0 14px;padding:0 2px;">全114戦の着順をもとに集計。スコアはゲームごとに基準が異なるため、順位（1〜3位）で比較しています。</p>
+  <div class="table-wrap">
+  <table class="gs-table">
+    <thead><tr><th>プレイヤー</th><th>1位</th><th>2位</th><th>3位</th><th>平均順位</th><th>勝率</th><th>最下位率</th></tr></thead>
+    <tbody>
+      <tr><td><span class="p-a">aohige nagoya</span></td><td>44</td><td>45</td><td>25</td><td><b>1.84位</b></td><td><b>38.6%</b></td><td>21.9%</td></tr>
+      <tr><td><span class="p-s">sasuken2999</span></td><td>41</td><td>40</td><td>33</td><td>1.95位</td><td>36.0%</td><td>28.9%</td></tr>
+      <tr><td><span class="p-j">Jin2798</span></td><td>32</td><td>39</td><td>43</td><td>2.10位</td><td>28.1%</td><td>37.7%</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="font-size:.82rem;color:var(--muted);margin-top:10px;padding:0 2px;">総合では <b style="color:var(--a)">aohige</b> が最も安定（最下位が最少）。ただし3人は<b>ゲームの長さ（重さ）で得意・苦手がはっきり分かれます</b>。</p>
+</div>
+
+<!-- 時間帯別 -->
+<div class="section">
+  <h2>ゲーム時間帯（重さ）別の勝率　★最大の特徴</h2>
+  <div class="table-wrap">
+  <table class="gs-table">
+    <thead><tr><th>ゲーム長</th><th>戦数</th><th style="color:#74c0fc">sasuken2999</th><th style="color:#69db7c">aohige nagoya</th><th style="color:#f1948a">Jin2798</th></tr></thead>
+    <tbody>
+      <tr><td>短（10〜20分）軽量</td><td>57</td><td><b>24勝（42%）🔵最強</b></td><td>14勝（25%）</td><td>20勝（35%）</td></tr>
+      <tr><td>中（30〜40分）</td><td>27</td><td>9勝（33%）</td><td><b>11勝（41%）</b></td><td>7勝（26%）</td></tr>
+      <tr><td>長（50分以上）重量</td><td>26</td><td>5勝（19%）</td><td><b>18勝（69%）🟢独占</b></td><td>5勝（19%）</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="font-size:.82rem;color:var(--muted);margin-top:10px;padding:0 2px;">さらに <b>60分以上の重量級（21戦）</b>では <b style="color:var(--a)">aohige が16勝（76%）</b>／sasuken 2勝・Jin 3勝。<b>90分帯（11戦）は aohige が10勝で独占</b>。<br>→ <b style="color:var(--s)">sasuken＝短時間の瞬発型</b>、<b style="color:var(--a)">aohige＝長時間の思考型</b>、<b style="color:var(--j)">Jin＝短〜中時間で健闘するが波が大きい</b>。</p>
+</div>
+
+<!-- プレイヤー別 -->
+<div class="section">
+  <h2>プレイヤー別の傾向</h2>
+  <div style="border-left:5px solid var(--s);background:var(--card);border-radius:10px;padding:14px 18px;margin-bottom:14px;box-shadow:0 2px 6px rgba(0,0,0,.07);">
+    <div style="font-weight:800;font-size:1.05rem;color:var(--s);margin-bottom:8px;">sasuken2999 — 短時間の瞬発力タイプ</div>
+    <div style="font-size:.88rem;line-height:1.75;">
+      <b>得意:</b> 10〜20分の軽量・短時間ゲーム（短時間帯42%で3人中トップ）。<b>金庫:泥棒の巣窟・こねこばくはつは全勝</b>、タクタ(3/4)・トリオ(2/3)・チャレンジャーズ!(2/3)など読み合い/スピード系に強い。<br>
+      <b>苦手:</b> 60分以上の重量級はほぼ勝てず（21戦で2勝）。テラフォーミング・マーズ、アーク・ノヴァ、サイズ等の長時間ユーロで失速。長考ゲームほど弱い。<br>
+      <b>ひとこと:</b> 短距離走者。軽い卓では主役、重い卓では沈みがち。
+    </div>
+  </div>
+  <div style="border-left:5px solid var(--a);background:var(--card);border-radius:10px;padding:14px 18px;margin-bottom:14px;box-shadow:0 2px 6px rgba(0,0,0,.07);">
+    <div style="font-weight:800;font-size:1.05rem;color:var(--a);margin-bottom:8px;">aohige nagoya — 重量級ユーロの本命タイプ</div>
+    <div style="font-size:.88rem;line-height:1.75;">
+      <b>得意:</b> 50分以上の重量級で<b>勝率69%</b>と圧倒的。<b>サイズ・アーク・ノヴァ・オルレアン・アクロポリス・マウンテンゴーツ（各2/2で全勝）</b>など中〜重量級の戦略ゲームが並ぶ。90分帯は10勝で独占、キャッスルコンボ(3/4)も強い。<br>
+      <b>苦手:</b> 10〜20分の短時間・運要素の強い軽量ゲームは25%で3人中最下位。瞬発力勝負は分が悪い。<br>
+      <b>ひとこと:</b> マラソンランナー。じっくり考える重いゲームほど強い、総合トップの実力者。
+    </div>
+  </div>
+  <div style="border-left:5px solid var(--j);background:var(--card);border-radius:10px;padding:14px 18px;box-shadow:0 2px 6px rgba(0,0,0,.07);">
+    <div style="font-weight:800;font-size:1.05rem;color:var(--j);margin-bottom:8px;">Jin2798 — ムラのある短〜中距離タイプ</div>
+    <div style="font-size:.88rem;line-height:1.75;">
+      <b>得意:</b> 20分帯は15勝と健闘（この帯はsasukenに次ぐ）。<b>スカルキング(3/5で最多)</b>が象徴で、トリック/運・読み合い系で勝ち切ることがある。100分帯(2勝)などたまに重いゲームも拾う。<br>
+      <b>苦手:</b> 全体に<b>最下位が43回（37.7%）と最多</b>で安定感に欠ける。中時間帯(30〜40分)は26%と低調。1位(32)より最下位(43)が多く振れ幅が大きい。<br>
+      <b>ひとこと:</b> 一発はあるが安定しない。ハマると勝つが取りこぼしと最下位が多い波のあるタイプ。
+    </div>
+  </div>
+</div>
+
+<!-- タイトル別ハイライト -->
+<div class="section">
+  <h2>タイトル別ハイライト（複数回プレイ）</h2>
+  <div class="table-wrap">
+  <table class="gs-table">
+    <thead><tr><th>傾向</th><th>タイトル例（1位数/対戦数）</th></tr></thead>
+    <tbody>
+      <tr><td><span class="p-s">sasuken 得意</span></td><td>金庫:泥棒の巣窟(2/2)、こねこばくはつ(2/2)、タクタ(3/4)、チャレンジャーズ!(2/3)、トリオ(2/3)</td></tr>
+      <tr><td><span class="p-a">aohige 得意</span></td><td>サイズ・アーク・ノヴァ・オルレアン・アクロポリス・マウンテンゴーツ（各2/2）、キャッスルコンボ(3/4)</td></tr>
+      <tr><td><span class="p-j">Jin 得意</span></td><td>スカルキング(3/5)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="font-size:.78rem;color:var(--muted);margin-top:12px;padding:0 2px;">※ 各タイトルは1〜2戦が大半のため、タイトル単位は傾向のヒント（サンプル小）。時間帯別は十分な試合数があり信頼度が高い分析です。勝者/敗者形式の4戦は勝者=1位として扱っています。</p>
+</div>
+
+</div><!-- /tab-trend -->
+
+
 <script>
 function switchTab(name) {
   document.getElementById("tab-main").style.display    = name === "main"    ? "" : "none";
   document.getElementById("tab-shinken").style.display = name === "shinken" ? "" : "none";
   document.getElementById("tab-four").style.display    = name === "four"    ? "" : "none";
+  document.getElementById("tab-trend").style.display   = name === "trend"   ? "" : "none";
   document.querySelectorAll(".tab-btn").forEach(function(b) { b.classList.remove("active"); });
   document.querySelector(".tab-btn[data-tab='" + name + "']").classList.add("active");
 }
